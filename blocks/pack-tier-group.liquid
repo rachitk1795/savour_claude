@@ -22,46 +22,154 @@
   </div>
 </div>
 
-{% render 'pack-tier-group-styles' %}
+{% stylesheet %}
+  .pack-tier-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  .pack-tier-group__eyebrow {
+    text-align: center;
+    font-family: var(--font-h6--family);
+    font-weight: var(--font-h6--weight);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    color: var(--color-foreground-muted, var(--color-foreground));
+    margin: 0;
+  }
+
+  .pack-tier-group__heading {
+    text-align: center;
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .pack-tier-group__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+
+  /* Tablet and phone: stack the cards */
+  @media screen and (max-width: 989px) {
+    .pack-tier-group__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .pack-tier-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.6rem;
+    padding: 1.8rem 1.6rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--style-border-radius-sm, 8px);
+    min-width: 0;
+  }
+
+  .pack-tier-card--highlighted {
+    border: 2px solid var(--color-primary-button-background);
+  }
+
+  .pack-tier-card__badge {
+    display: inline-block;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.3rem 1rem;
+    border-radius: 100px;
+    background-color: var(--color-border);
+    color: var(--color-foreground);
+  }
+
+  .pack-tier-card__badge--highlighted {
+    background-color: var(--color-primary-button-background);
+    color: var(--color-primary-button-text);
+  }
+
+  .pack-tier-card__title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0.4rem 0 0;
+    overflow-wrap: anywhere;
+  }
+
+  .pack-tier-card__subtitle {
+    color: var(--color-foreground-muted, var(--color-foreground));
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .pack-tier-card__fine-print {
+    font-size: 1.2rem;
+    color: var(--color-foreground-muted, var(--color-foreground));
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .pack-tier-card__cta {
+    margin-top: 0.8rem;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: var(--minimum-touch-target, 44px);
+    text-align: center;
+  }
+
+  .pack-tier-card__cta--whatsapp svg {
+    flex-shrink: 0;
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  /* Small phones: tighten everything up further */
+  @media screen and (max-width: 480px) {
+    .pack-tier-group {
+      gap: 1.2rem;
+    }
+
+    .pack-tier-group__grid {
+      gap: 1rem;
+    }
+
+    .pack-tier-card {
+      padding: 1.4rem 1.2rem;
+      gap: 0.5rem;
+    }
+
+    .pack-tier-card__title {
+      font-size: 1.7rem;
+    }
+
+    .pack-tier-card__badge {
+      font-size: 1.1rem;
+      padding: 0.25rem 0.8rem;
+    }
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
   "name": "Pack tier group",
   "tag": null,
   "blocks": [
-    {
-      "type": "_pack-tier-card"
-    }
+    { "type": "_pack-tier-card" }
   ],
   "settings": [
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "Choose your pack"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Try it small. Scale when you're ready."
-    },
-    {
-      "type": "header",
-      "content": "Appearance"
-    },
-    {
-      "type": "color",
-      "id": "background_color",
-      "label": "Background color",
-      "placeholder": "Default"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text color",
-      "placeholder": "Default"
-    }
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Choose your pack" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Try it small. Scale when you're ready." },
+    { "type": "header", "content": "Appearance" },
+    { "type": "color", "id": "background_color", "label": "Background color", "placeholder": "Default" },
+    { "type": "color", "id": "text_color", "label": "Text color", "placeholder": "Default" }
   ],
   "presets": [
     {
@@ -77,7 +185,7 @@
           "settings": {
             "badge_text": "Your pack",
             "title": "500 pcs",
-            "subtitle": "Try it in one caf\u00e9",
+            "subtitle": "Try it in one café",
             "highlighted": true,
             "cta_type": "none"
           }
@@ -98,7 +206,7 @@
             "badge_text": "Best for bulk",
             "title": "3,000+ pcs",
             "subtitle": "Bulk and wholesale",
-            "fine_print": "GST invoice \u00b7 Pan-India supply \u00b7 Custom branding",
+            "fine_print": "GST invoice · Pan-India supply · Custom branding",
             "cta_type": "whatsapp",
             "cta_label": "Get pricing on WhatsApp",
             "whatsapp_number": "919111129997",
