@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -38,6 +39,7 @@
             "media_columns": "two",
             "image_gap": 1,
             "large_first_image": true,
+            "icons_style": "arrow",
             "slideshow_controls_style": "counter",
             "slideshow_mobile_controls_style": "dots",
             "thumbnail_position": "bottom",
@@ -348,6 +350,7 @@
                 "border_opacity": 100,
                 "border_color": "",
                 "border_radius": 0,
+                "link": "",
                 "open_in_new_tab": false,
                 "padding-block-start": 12,
                 "padding-block-end": 12,
@@ -386,6 +389,7 @@
                     "border_opacity": 100,
                     "border_color": "",
                     "border_radius": 0,
+                    "link": "",
                     "open_in_new_tab": false,
                     "padding-block-start": 0,
                     "padding-block-end": 0,
@@ -478,6 +482,7 @@
                     "border_opacity": 100,
                     "border_color": "",
                     "border_radius": 0,
+                    "link": "",
                     "open_in_new_tab": false,
                     "padding-block-start": 0,
                     "padding-block-end": 0,
@@ -548,10 +553,113 @@
         "padding-block-start": 1,
         "padding-block-end": 1
       }
+    },
+    "section_kgw7yC": {
+      "type": "section",
+      "blocks": {
+        "pack_tier_group_8F3rTi": {
+          "type": "pack-tier-group",
+          "name": "Pack tier group",
+          "settings": {
+            "eyebrow": "Choose your pack",
+            "heading": "Try it small. Scale when you're ready.",
+            "background_color": "",
+            "text_color": ""
+          },
+          "blocks": {
+            "pack_tier_card_kTYnrf": {
+              "type": "_pack-tier-card",
+              "settings": {
+                "badge_text": "Your pack",
+                "title": "500 pcs",
+                "subtitle": "Try it in one café",
+                "fine_print": "",
+                "highlighted": true,
+                "cta_type": "none",
+                "cta_label": "",
+                "link_url": "",
+                "whatsapp_number": "",
+                "whatsapp_message": ""
+              },
+              "blocks": {}
+            },
+            "pack_tier_card_dGcTFT": {
+              "type": "_pack-tier-card",
+              "settings": {
+                "badge_text": "Most popular",
+                "title": "1,000 pcs",
+                "subtitle": "Steady weekly service",
+                "fine_print": "",
+                "highlighted": false,
+                "cta_type": "link",
+                "cta_label": "View this pack",
+                "link_url": "",
+                "whatsapp_number": "",
+                "whatsapp_message": ""
+              },
+              "blocks": {}
+            },
+            "pack_tier_card_iMEd8a": {
+              "type": "_pack-tier-card",
+              "settings": {
+                "badge_text": "Best for bulk",
+                "title": "3,000+ pcs",
+                "subtitle": "Bulk and wholesale",
+                "fine_print": "GST invoice · Pan-India supply · Custom branding",
+                "highlighted": false,
+                "cta_type": "whatsapp",
+                "cta_label": "Get pricing on WhatsApp",
+                "link_url": "",
+                "whatsapp_number": "919111129997",
+                "whatsapp_message": "Hi, I'm interested in bulk pricing for PLA straws."
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "pack_tier_card_kTYnrf",
+            "pack_tier_card_dGcTFT",
+            "pack_tier_card_iMEd8a"
+          ]
+        }
+      },
+      "block_order": [
+        "pack_tier_group_8F3rTi"
+      ],
+      "name": "t:names.custom_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "main",
-    "product_recommendations_iA6pyd"
+    "product_recommendations_iA6pyd",
+    "section_kgw7yC"
   ]
 }
