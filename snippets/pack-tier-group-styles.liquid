@@ -1,0 +1,103 @@
+{%- doc -%}
+  Styles for the pack-tier-group block and its _pack-tier-card children.
+
+  @example
+  {% render 'pack-tier-group-styles' %}
+{%- enddoc -%}
+
+{% stylesheet %}
+  .pack-tier-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  .pack-tier-group__eyebrow {
+    text-align: center;
+    font-family: var(--font-h6--family);
+    font-weight: var(--font-h6--weight);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    color: var(--color-foreground-muted, var(--color-foreground));
+    margin: 0;
+  }
+
+  .pack-tier-group__heading {
+    text-align: center;
+    margin: 0;
+  }
+
+  .pack-tier-group__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+
+  @media (max-width: 989px) {
+    .pack-tier-group__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .pack-tier-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.6rem;
+    padding: 1.8rem 1.6rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--style-border-radius-sm, 8px);
+  }
+
+  .pack-tier-card--highlighted {
+    border: 2px solid var(--color-primary-button-background);
+  }
+
+  .pack-tier-card__badge {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.3rem 1rem;
+    border-radius: 100px;
+    background-color: var(--color-border);
+    color: var(--color-foreground);
+  }
+
+  .pack-tier-card__badge--highlighted {
+    background-color: var(--color-primary-button-background);
+    color: var(--color-primary-button-text);
+  }
+
+  .pack-tier-card__title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0.4rem 0 0;
+  }
+
+  .pack-tier-card__subtitle {
+    color: var(--color-foreground-muted, var(--color-foreground));
+    margin: 0;
+  }
+
+  .pack-tier-card__fine-print {
+    font-size: 1.2rem;
+    color: var(--color-foreground-muted, var(--color-foreground));
+    margin: 0;
+  }
+
+  .pack-tier-card__cta {
+    margin-top: 0.8rem;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+
+  .pack-tier-card__cta--whatsapp svg {
+    fill: currentColor;
+  }
+{% endstylesheet %}
