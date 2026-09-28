@@ -1,0 +1,88 @@
+{% assign block_settings = block.settings %}
+
+<div class="comparison-table-row" {{ block.shopify_attributes }}>
+  <div class="comparison-table-row__feature">{{ block_settings.feature }}</div>
+
+  <div class="comparison-table-row__cell">
+    {% case block_settings.alt_status %}
+      {% when 'available' %}
+        <span class="svg-wrapper icon-success">{{- 'icon-available.svg' | inline_asset_content -}}</span>
+      {% when 'unavailable' %}
+        <span class="svg-wrapper icon-error">{{- 'icon-unavailable.svg' | inline_asset_content -}}</span>
+      {% when 'warning' %}
+        <span class="svg-wrapper">{{- 'icon-warning.svg' | inline_asset_content -}}</span>
+    {% endcase %}
+    <span>{{ block_settings.alt_value }}</span>
+  </div>
+
+  <div class="comparison-table-row__cell">
+    {% case block_settings.pla_status %}
+      {% when 'available' %}
+        <span class="svg-wrapper icon-success">{{- 'icon-available.svg' | inline_asset_content -}}</span>
+      {% when 'unavailable' %}
+        <span class="svg-wrapper icon-error">{{- 'icon-unavailable.svg' | inline_asset_content -}}</span>
+      {% when 'warning' %}
+        <span class="svg-wrapper">{{- 'icon-warning.svg' | inline_asset_content -}}</span>
+    {% endcase %}
+    <span>{{ block_settings.pla_value }}</span>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Comparison row",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "feature",
+      "label": "Feature",
+      "default": "Feature name"
+    },
+    {
+      "type": "header",
+      "content": "Second column"
+    },
+    {
+      "type": "text",
+      "id": "alt_value",
+      "label": "Value",
+      "default": "Value"
+    },
+    {
+      "type": "select",
+      "id": "alt_status",
+      "label": "Icon",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "available", "label": "Check" },
+        { "value": "unavailable", "label": "Cross" },
+        { "value": "warning", "label": "Warning" }
+      ],
+      "default": "unavailable"
+    },
+    {
+      "type": "header",
+      "content": "Third column"
+    },
+    {
+      "type": "text",
+      "id": "pla_value",
+      "label": "Value",
+      "default": "Value"
+    },
+    {
+      "type": "select",
+      "id": "pla_status",
+      "label": "Icon",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "available", "label": "Check" },
+        { "value": "unavailable", "label": "Cross" },
+        { "value": "warning", "label": "Warning" }
+      ],
+      "default": "available"
+    }
+  ]
+}
+{% endschema %}
