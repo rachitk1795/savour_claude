@@ -83,10 +83,11 @@
     font-size: 1.2rem;
     font-weight: 600;
     letter-spacing: 0.02em;
-    padding: 0.3rem 1rem;
+    padding: calc(0.3rem - 1.5px) calc(1rem - 1.5px);
     border-radius: 100px;
-    background-color: rgb(var(--color-foreground-rgb) / 0.08);
+    background-color: transparent;
     color: var(--color-foreground);
+    border: 1.5px solid var(--color-foreground);
   }
 
   .pack-tier-card__badge--highlighted {
