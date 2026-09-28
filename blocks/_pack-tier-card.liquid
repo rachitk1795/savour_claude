@@ -1,0 +1,137 @@
+{% assign block_settings = block.settings %}
+
+{% assign whatsapp_url = '' %}
+{% if block_settings.cta_type == 'whatsapp' and block_settings.whatsapp_number != blank %}
+  {% assign whatsapp_url = 'https://wa.me/' | append: block_settings.whatsapp_number %}
+  {% if block_settings.whatsapp_message != blank %}
+    {% assign encoded_message = block_settings.whatsapp_message | url_encode %}
+    {% assign whatsapp_url = whatsapp_url | append: '?text=' | append: encoded_message %}
+  {% endif %}
+{% endif %}
+
+<div
+  class="pack-tier-card{% if block_settings.highlighted %} pack-tier-card--highlighted{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  {% if block_settings.badge_text != blank %}
+    <span class="pack-tier-card__badge{% if block_settings.highlighted %} pack-tier-card__badge--highlighted{% endif %}">
+      {{ block_settings.badge_text }}
+    </span>
+  {% endif %}
+
+  <p class="pack-tier-card__title">{{ block_settings.title }}</p>
+
+  {% if block_settings.subtitle != blank %}
+    <p class="pack-tier-card__subtitle">{{ block_settings.subtitle }}</p>
+  {% endif %}
+
+  {% if block_settings.fine_print != blank %}
+    <p class="pack-tier-card__fine-print">{{ block_settings.fine_print }}</p>
+  {% endif %}
+
+  {% case block_settings.cta_type %}
+    {% when 'link' %}
+      <a href="{{ block_settings.link_url }}" class="button button-secondary pack-tier-card__cta">
+        {{ block_settings.cta_label }}
+      </a>
+    {% when 'whatsapp' %}
+      <a
+        href="{{ whatsapp_url }}"
+        class="button pack-tier-card__cta pack-tier-card__cta--whatsapp"
+        target="_blank"
+        rel="noopener"
+      >
+        <svg
+          class="icon-default"
+          aria-hidden="true"
+          focusable="false"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 20 20"
+        >
+          {%- render 'icon', icon: 'whatsapp' -%}
+        </svg>
+        {{ block_settings.cta_label }}
+      </a>
+  {% endcase %}
+</div>
+
+{% schema %}
+{
+  "name": "Pack tier card",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "info": "Leave blank to hide the badge"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "500 pcs"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "fine_print",
+      "label": "Fine print",
+      "info": "Optional small text, e.g. GST invoice \u00b7 Pan-India supply"
+    },
+    {
+      "type": "checkbox",
+      "id": "highlighted",
+      "label": "Highlight this card",
+      "info": "Use for the pack this page represents",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "select",
+      "id": "cta_type",
+      "label": "Button type",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "link", "label": "Link to another page" },
+        { "value": "whatsapp", "label": "WhatsApp" }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "visible_if": "{{ block.settings.cta_type != 'none' }}"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link",
+      "visible_if": "{{ block.settings.cta_type == 'link' }}"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "WhatsApp number",
+      "info": "Country code plus number, digits only, e.g. 919111129997",
+      "visible_if": "{{ block.settings.cta_type == 'whatsapp' }}"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_message",
+      "label": "Pre-filled message",
+      "visible_if": "{{ block.settings.cta_type == 'whatsapp' }}"
+    }
+  ]
+}
+{% endschema %}

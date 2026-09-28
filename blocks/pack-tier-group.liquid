@@ -1,0 +1,113 @@
+{% assign block_settings = block.settings %}
+
+{% render 'contrast-override',
+  background_color: block_settings.background_color,
+  text_color: block_settings.text_color,
+  section_id: block.id
+%}
+
+<div
+  class="pack-tier-group{% if block_settings.background_color != blank or block_settings.text_color != blank %} color-custom-{{ block.id }}{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  {% if block_settings.eyebrow != blank %}
+    <p class="pack-tier-group__eyebrow">{{ block_settings.eyebrow }}</p>
+  {% endif %}
+  {% if block_settings.heading != blank %}
+    <h2 class="pack-tier-group__heading">{{ block_settings.heading }}</h2>
+  {% endif %}
+
+  <div class="pack-tier-group__grid">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% render 'pack-tier-group-styles' %}
+
+{% schema %}
+{
+  "name": "Pack tier group",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_pack-tier-card"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Choose your pack"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Try it small. Scale when you're ready."
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "placeholder": "Default"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "placeholder": "Default"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pack tier group",
+      "category": "Layout",
+      "settings": {
+        "eyebrow": "Choose your pack",
+        "heading": "Try it small. Scale when you're ready."
+      },
+      "blocks": {
+        "tier-1": {
+          "type": "_pack-tier-card",
+          "settings": {
+            "badge_text": "Your pack",
+            "title": "500 pcs",
+            "subtitle": "Try it in one caf\u00e9",
+            "highlighted": true,
+            "cta_type": "none"
+          }
+        },
+        "tier-2": {
+          "type": "_pack-tier-card",
+          "settings": {
+            "badge_text": "Most popular",
+            "title": "1,000 pcs",
+            "subtitle": "Steady weekly service",
+            "cta_type": "link",
+            "cta_label": "View this pack"
+          }
+        },
+        "tier-3": {
+          "type": "_pack-tier-card",
+          "settings": {
+            "badge_text": "Best for bulk",
+            "title": "3,000+ pcs",
+            "subtitle": "Bulk and wholesale",
+            "fine_print": "GST invoice \u00b7 Pan-India supply \u00b7 Custom branding",
+            "cta_type": "whatsapp",
+            "cta_label": "Get pricing on WhatsApp",
+            "whatsapp_number": "919111129997",
+            "whatsapp_message": "Hi, I'm interested in bulk pricing for PLA straws."
+          }
+        }
+      },
+      "block_order": ["tier-1", "tier-2", "tier-3"]
+    }
+  ]
+}
+{% endschema %}
