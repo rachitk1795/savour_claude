@@ -416,12 +416,12 @@
           "settings": {
             "content_direction": "row",
             "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
+            "horizontal_alignment": "center",
             "vertical_alignment": "center",
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
+            "gap": 70,
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
@@ -456,7 +456,6 @@
               "settings": {
                 "eyebrow": "",
                 "heading": "",
-                "feature_column_label": "Feature",
                 "alt_column_label": "Paper straw",
                 "pla_column_label": "OrganiPaks PLA",
                 "background_color": "",
@@ -466,8 +465,8 @@
                 "comparison_row_8QERHJ": {
                   "type": "_comparison-row",
                   "settings": {
-                    "feature": "Stays firm in cold drinks",
-                    "alt_value": "Softens",
+                    "feature": "",
+                    "alt_value": "Gets soggy",
                     "alt_status": "unavailable",
                     "pla_value": "Stays firm",
                     "pla_status": "available"
@@ -477,7 +476,7 @@
                 "comparison_row_GhWH7U": {
                   "type": "_comparison-row",
                   "settings": {
-                    "feature": "Mouthfeel",
+                    "feature": "",
                     "alt_value": "Paper-like",
                     "alt_status": "none",
                     "pla_value": "Smooth and familiar",
@@ -488,7 +487,7 @@
                 "comparison_row_wcHQEi": {
                   "type": "_comparison-row",
                   "settings": {
-                    "feature": "Long-duration drinks",
+                    "feature": "",
                     "alt_value": "Degrades",
                     "alt_status": "warning",
                     "pla_value": "Built for it",
@@ -499,7 +498,7 @@
                 "comparison_row_DL9bUf": {
                   "type": "_comparison-row",
                   "settings": {
-                    "feature": "Individually wrapped",
+                    "feature": "",
                     "alt_value": "Available",
                     "alt_status": "available",
                     "pla_value": "Available",
@@ -510,7 +509,7 @@
                 "comparison_row_TznDRG": {
                   "type": "_comparison-row",
                   "settings": {
-                    "feature": "Compostable range",
+                    "feature": "",
                     "alt_value": "Depends on coating",
                     "alt_status": "none",
                     "pla_value": "Certified PLA",
