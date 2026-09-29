@@ -355,6 +355,244 @@
         "padding-block-end": 0
       }
     },
+    "section_rwt4fT": {
+      "type": "section",
+      "blocks": {
+        "text_9dndnp": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Paper vs PLA</h2>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_mk9Jtr": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<h4>Saving the planet shouldn't ruin the drink.</h4>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "group_9JN4HF": {
+          "type": "group",
+          "name": "t:names.group",
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "comparison_table_qkQ4r4": {
+              "type": "comparison-table",
+              "name": "Comparison table",
+              "settings": {
+                "eyebrow": "",
+                "heading": "",
+                "feature_column_label": "Feature",
+                "alt_column_label": "Paper straw",
+                "pla_column_label": "OrganiPaks PLA",
+                "background_color": "",
+                "text_color": ""
+              },
+              "blocks": {
+                "comparison_row_8QERHJ": {
+                  "type": "_comparison-row",
+                  "settings": {
+                    "feature": "Stays firm in cold drinks",
+                    "alt_value": "Softens",
+                    "alt_status": "unavailable",
+                    "pla_value": "Stays firm",
+                    "pla_status": "available"
+                  },
+                  "blocks": {}
+                },
+                "comparison_row_GhWH7U": {
+                  "type": "_comparison-row",
+                  "settings": {
+                    "feature": "Mouthfeel",
+                    "alt_value": "Paper-like",
+                    "alt_status": "none",
+                    "pla_value": "Smooth and familiar",
+                    "pla_status": "available"
+                  },
+                  "blocks": {}
+                },
+                "comparison_row_wcHQEi": {
+                  "type": "_comparison-row",
+                  "settings": {
+                    "feature": "Long-duration drinks",
+                    "alt_value": "Degrades",
+                    "alt_status": "warning",
+                    "pla_value": "Built for it",
+                    "pla_status": "available"
+                  },
+                  "blocks": {}
+                },
+                "comparison_row_DL9bUf": {
+                  "type": "_comparison-row",
+                  "settings": {
+                    "feature": "Individually wrapped",
+                    "alt_value": "Available",
+                    "alt_status": "available",
+                    "pla_value": "Available",
+                    "pla_status": "available"
+                  },
+                  "blocks": {}
+                },
+                "comparison_row_TznDRG": {
+                  "type": "_comparison-row",
+                  "settings": {
+                    "feature": "Compostable range",
+                    "alt_value": "Depends on coating",
+                    "alt_status": "none",
+                    "pla_value": "Certified PLA",
+                    "pla_status": "available"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "comparison_row_8QERHJ",
+                "comparison_row_GhWH7U",
+                "comparison_row_wcHQEi",
+                "comparison_row_DL9bUf",
+                "comparison_row_TznDRG"
+              ]
+            },
+            "image_pLgPmP": {
+              "type": "image",
+              "name": "t:names.image",
+              "settings": {
+                "image": "shopify://shop_images/IMG_4744.png",
+                "link": "",
+                "image_ratio": "portrait",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "comparison_table_qkQ4r4",
+            "image_pLgPmP"
+          ]
+        }
+      },
+      "block_order": [
+        "text_9dndnp",
+        "text_mk9Jtr",
+        "group_9JN4HF"
+      ],
+      "name": "t:names.custom_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "{{ settings.color_palette.background }}",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "product_list_X8Q7bi": {
       "type": "product-list",
       "blocks": {
@@ -826,6 +1064,7 @@
   },
   "order": [
     "media_with_content_k7wdhg",
+    "section_rwt4fT",
     "product_list_X8Q7bi",
     "section_RhpYRt"
   ]
