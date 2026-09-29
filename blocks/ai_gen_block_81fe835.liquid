@@ -4,7 +4,7 @@
 {% enddoc %}
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 {% style %}
-  .ai-feature-pill-{{ ai_gen_id }} { display: inline-flex; align-items: center; gap: 9px; box-sizing: border-box; width: {{ block.settings.desktop_width_percent }}%; max-width: 100%; padding: 9px 16px; border: {{ block.settings.border_thickness }}px solid {{ block.settings.border_color }}; border-radius: {{ block.settings.corner_radius }}px; background: {{ block.settings.background_color }}; color: {{ block.settings.text_color }}; }
+  .ai-feature-pill-{{ ai_gen_id }} { display: inline-flex; align-items: center; gap: 9px; box-sizing: border-box; width: fit-content; max-width: {{ block.settings.desktop_width_percent }}%; padding: 9px 16px; border: {{ block.settings.border_thickness }}px solid {{ block.settings.border_color }}; border-radius: {{ block.settings.corner_radius }}px; background: {{ block.settings.background_color }}; color: {{ block.settings.text_color }}; }
   .ai-feature-pill-{{ ai_gen_id }}__icon { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; width: 20px; height: 20px; color: {{ block.settings.icon_color }}; }
   .ai-feature-pill-{{ ai_gen_id }}__icon svg { display: block; width: 100%; height: 100%; }
   .ai-feature-pill-{{ ai_gen_id }}__text { margin: 0; font-family: {{ block.settings.text_font.family }}, {{ block.settings.text_font.fallback_families }}; font-style: {{ block.settings.text_font.style }}; font-weight: {{ block.settings.text_font.weight }}; font-size: {{ block.settings.text_size }}px; line-height: 1.35; text-transform: {{ block.settings.text_transform }}; letter-spacing: {{ block.settings.letter_spacing }}px; }
