@@ -9,7 +9,8 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/Untitled-3jpg.jpg",
+    "logo": "shopify://shop_images/organipaks-logo-transparent.png",
+    "logo_inverse": "shopify://shop_images/Untitled-4.png",
     "logo_height": 36,
     "logo_height_mobile": 28,
     "page_text_color": "{{ settings.color_palette.foreground }}",
