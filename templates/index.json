@@ -477,9 +477,9 @@
                   "type": "_comparison-row",
                   "settings": {
                     "feature": "",
-                    "alt_value": "Paper-like",
-                    "alt_status": "none",
-                    "pla_value": "Smooth and familiar",
+                    "alt_value": "Papery aftertaste",
+                    "alt_status": "unavailable",
+                    "pla_value": "Zero aftertaste",
                     "pla_status": "available"
                   },
                   "blocks": {}
@@ -488,9 +488,9 @@
                   "type": "_comparison-row",
                   "settings": {
                     "feature": "",
-                    "alt_value": "Degrades",
+                    "alt_value": "Costs a Tree",
                     "alt_status": "warning",
-                    "pla_value": "Built for it",
+                    "pla_value": "Corn waste repurposed",
                     "pla_status": "available"
                   },
                   "blocks": {}
@@ -499,9 +499,9 @@
                   "type": "_comparison-row",
                   "settings": {
                     "feature": "",
-                    "alt_value": "Available",
-                    "alt_status": "available",
-                    "pla_value": "Available",
+                    "alt_value": "Lasts 20 mins",
+                    "alt_status": "warning",
+                    "pla_value": "Holds up for hours",
                     "pla_status": "available"
                   },
                   "blocks": {}
@@ -510,9 +510,9 @@
                   "type": "_comparison-row",
                   "settings": {
                     "feature": "",
-                    "alt_value": "Depends on coating",
-                    "alt_status": "none",
-                    "pla_value": "Certified PLA",
+                    "alt_value": "No certifications",
+                    "alt_status": "warning",
+                    "pla_value": "CPCB Certified",
                     "pla_status": "available"
                   },
                   "blocks": {}
