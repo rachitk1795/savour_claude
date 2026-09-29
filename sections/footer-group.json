@@ -61,10 +61,32 @@
                 "custom_liquid": "<style>\n  .button,\n  .button-secondary,\n  .button-custom {\n    font-weight: 800;\n  }\n</style>"
               },
               "blocks": {}
+            },
+            "logo_6eXURx": {
+              "type": "logo",
+              "name": "t:names.logo",
+              "settings": {
+                "inverse": false,
+                "font": "heading",
+                "text_color": "",
+                "unit": "percent",
+                "percent_width": 75,
+                "pixel_height": 48,
+                "custom_mobile_size": false,
+                "unit_mobile": "percent",
+                "percent_width_mobile": 100,
+                "pixel_height_mobile": 120,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
-            "custom_liquid_989LTp"
+            "custom_liquid_989LTp",
+            "logo_6eXURx"
           ]
         },
         "group_EJMKU9": {
