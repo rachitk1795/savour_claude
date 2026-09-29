@@ -19,7 +19,6 @@
 
   <div class="comparison-table__grid">
     <div class="comparison-table-row comparison-table-row--header">
-      <div class="comparison-table-row__feature">{{ block_settings.feature_column_label }}</div>
       <div class="comparison-table-row__cell">{{ block_settings.alt_column_label }}</div>
       <div class="comparison-table-row__cell">{{ block_settings.pla_column_label }}</div>
     </div>
@@ -57,20 +56,14 @@
     },
     {
       "type": "text",
-      "id": "feature_column_label",
-      "label": "First column label",
-      "default": "Feature"
-    },
-    {
-      "type": "text",
       "id": "alt_column_label",
-      "label": "Second column label",
+      "label": "First column label",
       "default": "Paper straw"
     },
     {
       "type": "text",
       "id": "pla_column_label",
-      "label": "Third column label",
+      "label": "Second column label",
       "default": "OrganiPaks PLA"
     },
     {
@@ -104,10 +97,10 @@
         "row-1": {
           "type": "_comparison-row",
           "settings": {
-            "feature": "Stays firm in cold drinks",
-            "alt_value": "Softens",
+            "feature": "Cold drinks",
+            "alt_value": "Gets soggy",
             "alt_status": "unavailable",
-            "pla_value": "Stays firm",
+            "pla_value": "Stays strong",
             "pla_status": "available"
           }
         },
@@ -115,19 +108,19 @@
           "type": "_comparison-row",
           "settings": {
             "feature": "Mouthfeel",
-            "alt_value": "Paper-like",
+            "alt_value": "Papery texture",
             "alt_status": "none",
-            "pla_value": "Smooth and familiar",
+            "pla_value": "Smooth & familiar",
             "pla_status": "available"
           }
         },
         "row-3": {
           "type": "_comparison-row",
           "settings": {
-            "feature": "Long-duration drinks",
-            "alt_value": "Degrades",
+            "feature": "Long sipping sessions",
+            "alt_value": "Breaks down",
             "alt_status": "warning",
-            "pla_value": "Built for it",
+            "pla_value": "Built to last",
             "pla_status": "available"
           }
         },
@@ -145,9 +138,9 @@
           "type": "_comparison-row",
           "settings": {
             "feature": "Compostable range",
-            "alt_value": "Depends on coating",
+            "alt_value": "Coating-dependent",
             "alt_status": "none",
-            "pla_value": "Certified PLA",
+            "pla_value": "Certified compostable",
             "pla_status": "available"
           }
         }
