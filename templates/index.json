@@ -207,17 +207,17 @@
                   "settings": {
                     "pill_text": "Never soggy",
                     "icon_style": "check",
-                    "desktop_width_percent": 50,
+                    "desktop_width_percent": 100,
                     "corner_radius": 40,
                     "text_font": "montserrat_n6",
                     "text_size": 14,
                     "text_transform": "none",
                     "letter_spacing": 0,
-                    "background_color": "#D4E8E2",
-                    "text_color": "#1D3932",
-                    "icon_color": "#03754B",
+                    "background_color": "#d4e8e2",
+                    "text_color": "#1d3932",
+                    "icon_color": "#03754b",
                     "border_thickness": 1,
-                    "border_color": "#1D3932"
+                    "border_color": "#1d3932"
                   },
                   "blocks": {}
                 },
@@ -233,11 +233,11 @@
                     "text_size": 14,
                     "text_transform": "none",
                     "letter_spacing": 0,
-                    "background_color": "#D4E8E2",
-                    "text_color": "#1D3932",
-                    "icon_color": "#03754B",
+                    "background_color": "#d4e8e2",
+                    "text_color": "#1d3932",
+                    "icon_color": "#03754b",
                     "border_thickness": 1,
-                    "border_color": "#1D3932"
+                    "border_color": "#1d3932"
                   },
                   "blocks": {}
                 }
@@ -299,11 +299,11 @@
                     "text_size": 14,
                     "text_transform": "none",
                     "letter_spacing": 0,
-                    "background_color": "#D4E8E2",
-                    "text_color": "#1D3932",
-                    "icon_color": "#03754B",
+                    "background_color": "#d4e8e2",
+                    "text_color": "#1d3932",
+                    "icon_color": "#03754b",
                     "border_thickness": 1,
-                    "border_color": "#1D3932"
+                    "border_color": "#1d3932"
                   },
                   "blocks": {}
                 },
@@ -319,11 +319,11 @@
                     "text_size": 14,
                     "text_transform": "none",
                     "letter_spacing": 0,
-                    "background_color": "#D4E8E2",
-                    "text_color": "#1D3932",
-                    "icon_color": "#03754B",
+                    "background_color": "#d4e8e2",
+                    "text_color": "#1d3932",
+                    "icon_color": "#03754b",
                     "border_thickness": 1,
-                    "border_color": "#1D3932"
+                    "border_color": "#1d3932"
                   },
                   "blocks": {}
                 }
@@ -332,46 +332,6 @@
                 "ai_gen_block_81fe835_F669gb",
                 "ai_gen_block_81fe835_EM7tzV"
               ]
-            },
-            "ai_gen_block_81fe835_iVYDnT": {
-              "type": "ai_gen_block_81fe835",
-              "disabled": true,
-              "settings": {
-                "pill_text": "Thoughtfully made for everyday",
-                "icon_style": "leaf",
-                "desktop_width_percent": 60,
-                "corner_radius": 40,
-                "text_font": "montserrat_n4",
-                "text_size": 14,
-                "text_transform": "none",
-                "letter_spacing": 0,
-                "background_color": "#D4E8E2",
-                "text_color": "#1D3932",
-                "icon_color": "#03754B",
-                "border_thickness": 1,
-                "border_color": "#1D3932"
-              },
-              "blocks": {}
-            },
-            "ai_gen_block_81fe835_FqRXhY": {
-              "type": "ai_gen_block_81fe835",
-              "disabled": true,
-              "settings": {
-                "pill_text": "Thoughtfully made for everyday",
-                "icon_style": "leaf",
-                "desktop_width_percent": 60,
-                "corner_radius": 40,
-                "text_font": "montserrat_n4",
-                "text_size": 14,
-                "text_transform": "none",
-                "letter_spacing": 0,
-                "background_color": "#D4E8E2",
-                "text_color": "#1D3932",
-                "icon_color": "#03754B",
-                "border_thickness": 1,
-                "border_color": "#1D3932"
-              },
-              "blocks": {}
             }
           },
           "block_order": [
@@ -379,9 +339,7 @@
             "text_dxRtpe",
             "group_at4kCX",
             "group_e8Ebhp",
-            "group_4j9AQw",
-            "ai_gen_block_81fe835_iVYDnT",
-            "ai_gen_block_81fe835_FqRXhY"
+            "group_4j9AQw"
           ]
         }
       },
