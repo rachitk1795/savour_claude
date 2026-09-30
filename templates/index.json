@@ -1336,6 +1336,19 @@
                 "text_4GBNRc"
               ]
             },
+            "divider_DKtEVd": {
+              "type": "_divider",
+              "name": "t:names.divider",
+              "settings": {
+                "thickness": 1,
+                "corner_radius": "square",
+                "divider_color": "",
+                "width_percent": 100,
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
             "group_k8kfhU": {
               "type": "group",
               "name": "t:names.group",
@@ -1459,6 +1472,19 @@
                 "text_9hfrBx"
               ]
             },
+            "divider_wJMWkt": {
+              "type": "_divider",
+              "name": "t:names.divider",
+              "settings": {
+                "thickness": 1,
+                "corner_radius": "square",
+                "divider_color": "",
+                "width_percent": 100,
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
             "group_zkDgzd": {
               "type": "group",
               "name": "t:names.group",
@@ -1581,6 +1607,19 @@
                 "text_Bw8Kg7",
                 "text_FeAzDF"
               ]
+            },
+            "divider_N9Pd7L": {
+              "type": "_divider",
+              "name": "t:names.divider",
+              "settings": {
+                "thickness": 1,
+                "corner_radius": "square",
+                "divider_color": "",
+                "width_percent": 100,
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
             },
             "group_mXjhCh": {
               "type": "group",
@@ -1708,8 +1747,11 @@
           },
           "block_order": [
             "group_DjWde8",
+            "divider_DKtEVd",
             "group_k8kfhU",
+            "divider_wJMWkt",
             "group_zkDgzd",
+            "divider_N9Pd7L",
             "group_mXjhCh"
           ]
         }
