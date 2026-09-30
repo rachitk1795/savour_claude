@@ -2323,7 +2323,7 @@
                   "name": "t:names.button",
                   "settings": {
                     "label": "Order the Sample kit",
-                    "link": "shopify://collections/all",
+                    "link": "shopify://products/organipaks-straws-cutlery-sample-kit",
                     "open_in_new_tab": false,
                     "style_class": "button-secondary",
                     "custom_button_background": "{{ settings.color_palette.foreground }}",
