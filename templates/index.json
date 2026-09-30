@@ -1122,7 +1122,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>RUN A CAFÉ, RESTAURANT OR CLOUD KITCHEN?</p>",
+            "text": "<p><strong>RUN A CAFÉ, RESTAURANT OR CLOUD KITCHEN?</strong></p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "left",
@@ -1143,10 +1143,227 @@
             "padding-inline-end": 0
           },
           "blocks": {}
+        },
+        "text_itayT4": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Dont buy retail.</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_qDhjzc": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>For requirements of 3,000 pieces or more, talk directly to our team for business pricing, recommendations and regular supply.</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_7B47GA": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Get Business Pricing",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "custom_button_background": "{{ settings.color_palette.foreground }}",
+            "custom_button_text": "{{ settings.color_palette.background }}",
+            "custom_button_border": "{{ settings.color_palette.background }}",
+            "link_text_color": "",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        },
+        "divider_erDaeH": {
+          "type": "_divider",
+          "name": "t:names.divider",
+          "settings": {
+            "thickness": 1,
+            "corner_radius": "square",
+            "divider_color": "{{ settings.color_palette.background }}",
+            "width_percent": 100,
+            "padding-block-start": 10,
+            "padding-block-end": 10
+          },
+          "blocks": {}
+        },
+        "group_4B3k4f": {
+          "type": "group",
+          "name": "t:names.group",
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "ai_gen_block_81fe835_tgMc4W": {
+              "type": "ai_gen_block_81fe835",
+              "name": "Feature pill",
+              "settings": {
+                "pill_text": "Bulk Pricing",
+                "icon_style": "check",
+                "desktop_width_percent": 100,
+                "corner_radius": 40,
+                "text_font": "montserrat_n4",
+                "text_size": 14,
+                "text_transform": "none",
+                "letter_spacing": 0,
+                "background_color": "#D4E8E2",
+                "text_color": "#1D3932",
+                "icon_color": "#03754B",
+                "border_thickness": 1,
+                "border_color": "#1D3932"
+              },
+              "blocks": {}
+            },
+            "ai_gen_block_81fe835_nWKmwi": {
+              "type": "ai_gen_block_81fe835",
+              "name": "Feature pill",
+              "settings": {
+                "pill_text": "GST invoice",
+                "icon_style": "check",
+                "desktop_width_percent": 100,
+                "corner_radius": 40,
+                "text_font": "montserrat_n4",
+                "text_size": 14,
+                "text_transform": "none",
+                "letter_spacing": 0,
+                "background_color": "#D4E8E2",
+                "text_color": "#1D3932",
+                "icon_color": "#03754B",
+                "border_thickness": 1,
+                "border_color": "#1D3932"
+              },
+              "blocks": {}
+            },
+            "ai_gen_block_81fe835_NnAzkg": {
+              "type": "ai_gen_block_81fe835",
+              "name": "Feature pill",
+              "settings": {
+                "pill_text": "Pan-India shipping",
+                "icon_style": "check",
+                "desktop_width_percent": 100,
+                "corner_radius": 40,
+                "text_font": "montserrat_n4",
+                "text_size": 14,
+                "text_transform": "none",
+                "letter_spacing": 0,
+                "background_color": "#D4E8E2",
+                "text_color": "#1D3932",
+                "icon_color": "#03754B",
+                "border_thickness": 1,
+                "border_color": "#1D3932"
+              },
+              "blocks": {}
+            },
+            "ai_gen_block_81fe835_Djggf3": {
+              "type": "ai_gen_block_81fe835",
+              "name": "Feature pill",
+              "settings": {
+                "pill_text": "Dispatch within 24 hours",
+                "icon_style": "check",
+                "desktop_width_percent": 100,
+                "corner_radius": 40,
+                "text_font": "montserrat_n4",
+                "text_size": 14,
+                "text_transform": "none",
+                "letter_spacing": 0,
+                "background_color": "#D4E8E2",
+                "text_color": "#1D3932",
+                "icon_color": "#03754B",
+                "border_thickness": 1,
+                "border_color": "#1D3932"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "ai_gen_block_81fe835_tgMc4W",
+            "ai_gen_block_81fe835_nWKmwi",
+            "ai_gen_block_81fe835_NnAzkg",
+            "ai_gen_block_81fe835_Djggf3"
+          ]
         }
       },
       "block_order": [
-        "text_hrBHeK"
+        "text_hrBHeK",
+        "text_itayT4",
+        "text_qDhjzc",
+        "button_7B47GA",
+        "divider_erDaeH",
+        "group_4B3k4f"
       ],
       "name": "t:names.custom_section",
       "settings": {
@@ -1173,7 +1390,7 @@
         "border_width": 1,
         "border_opacity": 100,
         "border_color": "",
-        "border_radius": 100,
+        "border_radius": 0,
         "padding-block-start": 0,
         "padding-block-end": 0
       }
