@@ -691,7 +691,7 @@
               "type": "product-card",
               "name": "t:names.product_card",
               "settings": {
-                "product": "",
+                "product": "6mm-pla-straws",
                 "product_card_gap": 4,
                 "width": "fill",
                 "custom_width": 100,
@@ -787,7 +787,7 @@
               "type": "product-card",
               "name": "t:names.product_card",
               "settings": {
-                "product": "",
+                "product": "8mm-pla-straws",
                 "product_card_gap": 4,
                 "width": "fill",
                 "custom_width": 100,
@@ -883,7 +883,7 @@
               "type": "product-card",
               "name": "t:names.product_card",
               "settings": {
-                "product": "",
+                "product": "10mm-pla-straws",
                 "product_card_gap": 4,
                 "width": "fill",
                 "custom_width": 100,
@@ -979,7 +979,7 @@
               "type": "product-card",
               "name": "t:names.product_card",
               "settings": {
-                "product": "",
+                "product": "12mm-pla-straws",
                 "product_card_gap": 4,
                 "width": "fill",
                 "custom_width": 100,
@@ -1280,11 +1280,11 @@
                 "text_size": 14,
                 "text_transform": "none",
                 "letter_spacing": 0,
-                "background_color": "#D4E8E2",
-                "text_color": "#1D3932",
-                "icon_color": "#03754B",
+                "background_color": "#d4e8e2",
+                "text_color": "#1d3932",
+                "icon_color": "#03754b",
                 "border_thickness": 1,
-                "border_color": "#1D3932"
+                "border_color": "#1d3932"
               },
               "blocks": {}
             },
@@ -1300,11 +1300,11 @@
                 "text_size": 14,
                 "text_transform": "none",
                 "letter_spacing": 0,
-                "background_color": "#D4E8E2",
-                "text_color": "#1D3932",
-                "icon_color": "#03754B",
+                "background_color": "#d4e8e2",
+                "text_color": "#1d3932",
+                "icon_color": "#03754b",
                 "border_thickness": 1,
-                "border_color": "#1D3932"
+                "border_color": "#1d3932"
               },
               "blocks": {}
             },
@@ -1320,11 +1320,11 @@
                 "text_size": 14,
                 "text_transform": "none",
                 "letter_spacing": 0,
-                "background_color": "#D4E8E2",
-                "text_color": "#1D3932",
-                "icon_color": "#03754B",
+                "background_color": "#d4e8e2",
+                "text_color": "#1d3932",
+                "icon_color": "#03754b",
                 "border_thickness": 1,
-                "border_color": "#1D3932"
+                "border_color": "#1d3932"
               },
               "blocks": {}
             },
@@ -1340,11 +1340,11 @@
                 "text_size": 14,
                 "text_transform": "none",
                 "letter_spacing": 0,
-                "background_color": "#D4E8E2",
-                "text_color": "#1D3932",
-                "icon_color": "#03754B",
+                "background_color": "#d4e8e2",
+                "text_color": "#1d3932",
+                "icon_color": "#03754b",
                 "border_thickness": 1,
-                "border_color": "#1D3932"
+                "border_color": "#1d3932"
               },
               "blocks": {}
             }
