@@ -681,6 +681,14 @@
     "section_AkjPRj": {
       "type": "section",
       "blocks": {
+        "custom_liquid_DYwimA": {
+          "type": "custom-liquid",
+          "name": "t:names.custom_liquid",
+          "settings": {
+            "custom_liquid": "<style> #shopify-section-{{ section.id }} { display: none; } @media screen and (min-width: 750px) { #shopify-section-{{ section.id }} { display: block; } } </style>"
+          },
+          "blocks": {}
+        },
         "text_Ytk4fQ": {
           "type": "text",
           "name": "t:names.text",
@@ -1169,12 +1177,12 @@
         }
       },
       "block_order": [
+        "custom_liquid_DYwimA",
         "text_Ytk4fQ",
         "text_8fhrUd",
         "group_zDCBUy"
       ],
-      "disabled": true,
-      "name": "t:names.custom_section",
+      "name": "Choose size desktop",
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -1557,21 +1565,68 @@
                 "text_cGDeRj",
                 "text_9hfrBx"
               ]
-            },
-            "divider_wJMWkt": {
-              "type": "_divider",
-              "name": "t:names.divider",
-              "settings": {
-                "thickness": 1,
-                "corner_radius": "square",
-                "divider_color": "",
-                "width_percent": 100,
-                "padding-block-start": 0,
-                "padding-block-end": 0
-              },
-              "blocks": {}
-            },
-            "group_zkDgzd": {
+            }
+          },
+          "block_order": [
+            "group_DjWde8",
+            "divider_DKtEVd",
+            "group_k8kfhU"
+          ]
+        },
+        "divider_k9HXQQ": {
+          "type": "_divider",
+          "name": "t:names.divider",
+          "settings": {
+            "thickness": 1,
+            "corner_radius": "square",
+            "divider_color": "",
+            "width_percent": 100,
+            "padding-block-start": 0,
+            "padding-block-end": 0
+          },
+          "blocks": {}
+        },
+        "group_4ytbEh": {
+          "type": "group",
+          "name": "t:names.group",
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "group_rkbhWi": {
               "type": "group",
               "name": "t:names.group",
               "settings": {
@@ -1611,7 +1666,7 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "image_aqjApj": {
+                "image_MfDny3": {
                   "type": "image",
                   "name": "t:names.image",
                   "settings": {
@@ -1635,7 +1690,7 @@
                   },
                   "blocks": {}
                 },
-                "text_Bw8Kg7": {
+                "text_iAjfFL": {
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
@@ -1661,7 +1716,7 @@
                   },
                   "blocks": {}
                 },
-                "text_FeAzDF": {
+                "text_NdqVFr": {
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
@@ -1689,12 +1744,12 @@
                 }
               },
               "block_order": [
-                "image_aqjApj",
-                "text_Bw8Kg7",
-                "text_FeAzDF"
+                "image_MfDny3",
+                "text_iAjfFL",
+                "text_NdqVFr"
               ]
             },
-            "divider_N9Pd7L": {
+            "divider_UiXEqH": {
               "type": "_divider",
               "name": "t:names.divider",
               "settings": {
@@ -1707,7 +1762,7 @@
               },
               "blocks": {}
             },
-            "group_mXjhCh": {
+            "group_7yVTNR": {
               "type": "group",
               "name": "t:names.group",
               "settings": {
@@ -1747,11 +1802,11 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "image_JVaKEj": {
+                "image_WQU6dG": {
                   "type": "image",
                   "name": "t:names.image",
                   "settings": {
-                    "image": "shopify://shop_images/12mm-boba_5d0a2f38-4430-43c5-aeeb-2c5abe12c292.png",
+                    "image": "shopify://shop_images/10mm-thick-shakes_86d64e0f-36b1-4896-9315-7f85f1021014.png",
                     "link": "",
                     "image_ratio": "adapt",
                     "width": "fill",
@@ -1771,11 +1826,11 @@
                   },
                   "blocks": {}
                 },
-                "text_xTLAEF": {
+                "text_4nC8Ef": {
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>12mm PLA Straws</p>",
+                    "text": "<p>10mm PLA Straws</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -1797,11 +1852,11 @@
                   },
                   "blocks": {}
                 },
-                "text_X6nqRp": {
+                "text_z7Lm3z": {
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p><strong>For Boba Drinks</strong></p>",
+                    "text": "<p><strong>For Thick Shakes</strong></p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -1825,29 +1880,27 @@
                 }
               },
               "block_order": [
-                "image_JVaKEj",
-                "text_xTLAEF",
-                "text_X6nqRp"
+                "image_WQU6dG",
+                "text_4nC8Ef",
+                "text_z7Lm3z"
               ]
             }
           },
           "block_order": [
-            "group_DjWde8",
-            "divider_DKtEVd",
-            "group_k8kfhU",
-            "divider_wJMWkt",
-            "group_zkDgzd",
-            "divider_N9Pd7L",
-            "group_mXjhCh"
+            "group_rkbhWi",
+            "divider_UiXEqH",
+            "group_7yVTNR"
           ]
         }
       },
       "block_order": [
         "text_dC9FBJ",
         "text_ninm7n",
-        "group_XAkGm4"
+        "group_XAkGm4",
+        "divider_k9HXQQ",
+        "group_4ytbEh"
       ],
-      "name": "t:names.custom_section",
+      "name": "Choose size mobile",
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
