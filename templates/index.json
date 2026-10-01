@@ -1215,6 +1215,14 @@
     "section_BJHj4b": {
       "type": "section",
       "blocks": {
+        "custom_liquid_HAtXXR": {
+          "type": "custom-liquid",
+          "name": "t:names.custom_liquid",
+          "settings": {
+            "custom_liquid": "<style> @media screen and (min-width: 750px) { #shopify-section-{{ section.id }} { display: none; } } </style>"
+          },
+          "blocks": {}
+        },
         "text_dC9FBJ": {
           "type": "text",
           "name": "t:names.text",
@@ -1894,6 +1902,7 @@
         }
       },
       "block_order": [
+        "custom_liquid_HAtXXR",
         "text_dC9FBJ",
         "text_ninm7n",
         "group_XAkGm4",
