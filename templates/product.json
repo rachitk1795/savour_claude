@@ -191,11 +191,11 @@
                     "text_size": 14,
                     "text_transform": "none",
                     "letter_spacing": 0,
-                    "background_color": "#D4E8E2",
-                    "text_color": "#1D3932",
-                    "icon_color": "#03754B",
+                    "background_color": "#d4e8e2",
+                    "text_color": "#1d3932",
+                    "icon_color": "#03754b",
                     "border_thickness": 0,
-                    "border_color": "#1D3932"
+                    "border_color": "#1d3932"
                   },
                   "blocks": {}
                 },
@@ -211,11 +211,11 @@
                     "text_size": 14,
                     "text_transform": "none",
                     "letter_spacing": 0,
-                    "background_color": "#D4E8E2",
-                    "text_color": "#1D3932",
-                    "icon_color": "#03754B",
-                    "border_thickness": 1,
-                    "border_color": "#1D3932"
+                    "background_color": "#d4e8e2",
+                    "text_color": "#1d3932",
+                    "icon_color": "#03754b",
+                    "border_thickness": 0,
+                    "border_color": "#1d3932"
                   },
                   "blocks": {}
                 }
@@ -223,6 +223,92 @@
               "block_order": [
                 "ai_gen_block_81fe835_gR6az3",
                 "ai_gen_block_81fe835_UgPBwF"
+              ]
+            },
+            "group_EFYfNJ": {
+              "type": "group",
+              "name": "t:names.group",
+              "settings": {
+                "content_direction": "row",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background_media": "none",
+                "background_color": "",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "ai_gen_block_81fe835_xCrb9C": {
+                  "type": "ai_gen_block_81fe835",
+                  "name": "Feature pill",
+                  "settings": {
+                    "pill_text": "Full range",
+                    "icon_style": "heart",
+                    "desktop_width_percent": 100,
+                    "corner_radius": 40,
+                    "text_font": "montserrat_n4",
+                    "text_size": 14,
+                    "text_transform": "none",
+                    "letter_spacing": 0,
+                    "background_color": "#D4E8E2",
+                    "text_color": "#1D3932",
+                    "icon_color": "#03754B",
+                    "border_thickness": 0,
+                    "border_color": "#1D3932"
+                  },
+                  "blocks": {}
+                },
+                "ai_gen_block_81fe835_8wXwQB": {
+                  "type": "ai_gen_block_81fe835",
+                  "name": "Feature pill",
+                  "settings": {
+                    "pill_text": "Quick dispatch",
+                    "icon_style": "sparkle",
+                    "desktop_width_percent": 100,
+                    "corner_radius": 40,
+                    "text_font": "montserrat_n4",
+                    "text_size": 14,
+                    "text_transform": "none",
+                    "letter_spacing": 0,
+                    "background_color": "#D4E8E2",
+                    "text_color": "#1D3932",
+                    "icon_color": "#03754B",
+                    "border_thickness": 0,
+                    "border_color": "#1D3932"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "ai_gen_block_81fe835_xCrb9C",
+                "ai_gen_block_81fe835_8wXwQB"
               ]
             },
             "price_a7krng": {
@@ -432,10 +518,10 @@
                   "name": "t:names.button",
                   "settings": {
                     "label": "Order samples",
-                    "link": "shopify://collections/all",
+                    "link": "shopify://products/organipaks-straws-cutlery-sample-kit",
                     "open_in_new_tab": false,
                     "style_class": "button-custom",
-                    "custom_button_background": "#1D393200",
+                    "custom_button_background": "rgba(0,0,0,0)",
                     "custom_button_text": "{{ settings.color_palette.foreground }}",
                     "custom_button_border": "{{ settings.color_palette.foreground }}",
                     "link_text_color": "",
@@ -483,6 +569,7 @@
             "text_tefwj7",
             "text_K6Nz6q",
             "group_YaMY6m",
+            "group_EFYfNJ",
             "price_a7krng",
             "text_gXMUag",
             "variant_picker_R3rGDr",
@@ -506,6 +593,60 @@
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 0,
         "padding-block-end": 0
+      }
+    },
+    "marquee_cae87m": {
+      "type": "marquee",
+      "blocks": {
+        "text_wiiwXg": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Free Shipping on Sample kit.</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "nowrap",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "icon_4Y7xxb": {
+          "type": "icon",
+          "name": "t:names.icon",
+          "settings": {
+            "icon": "truck",
+            "width": 24,
+            "link": "",
+            "open_in_new_tab": false,
+            "icon_color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_wiiwXg",
+        "icon_4Y7xxb"
+      ],
+      "name": "t:names.marquee_section",
+      "settings": {
+        "movement_direction": "normal",
+        "background_color": "",
+        "padding-block-start": 24,
+        "padding-block-end": 24,
+        "gap_between_elements": 56
       }
     },
     "section_rraMGz": {
@@ -1060,6 +1201,7 @@
   },
   "order": [
     "main",
+    "marquee_cae87m",
     "section_rraMGz",
     "section_wUpKRq",
     "section_MD7gC7"
