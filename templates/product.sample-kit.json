@@ -458,7 +458,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<h6>GST invoice · Pan-India shipping · Dispatch within 24 hours</h6>",
+                "text": "<h6><strong>Free Pan-India shipping · Dispatch within 24 hours</strong></h6>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
