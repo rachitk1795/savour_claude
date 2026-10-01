@@ -1815,7 +1815,7 @@
                   "type": "image",
                   "name": "t:names.image",
                   "settings": {
-                    "image": "shopify://shop_images/10mm-thick-shakes_86d64e0f-36b1-4896-9315-7f85f1021014.png",
+                    "image": "shopify://shop_images/12mm-boba.png",
                     "link": "",
                     "image_ratio": "adapt",
                     "width": "fill",
@@ -1839,7 +1839,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>10mm PLA Straws</p>",
+                    "text": "<p>12mm PLA Straws</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -1865,7 +1865,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p><strong>For Thick Shakes</strong></p>",
+                    "text": "<p><strong>For Boba Drinks</strong></p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
