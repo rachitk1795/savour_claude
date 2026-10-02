@@ -833,9 +833,20 @@
     inset-inline-start: 0 !important;
     padding-inline: 0 !important;
     background-color: var(--color-background) !important;
-    border-radius: 12px !important;
+    border-radius: 12px 12px 0 0 !important;
     box-shadow: var(--shadow-popover) !important;
     overflow: hidden;
+    clip-path: none !important;
+  }
+
+  /* Kill the theme's slide-down transform and oversized top/bottom padding
+     that were designed for the full-width mega menu */
+  .menu-list__submenu .menu-list__submenu-inner {
+    transform: none !important;
+    padding-block-start: var(--padding-md) !important;
+    padding-block-end: var(--padding-md) !important;
+    max-height: none !important;
+    overflow: visible !important;
   }
 
   .menu-list__submenu .mega-menu {
@@ -846,7 +857,7 @@
   .menu-list__submenu .mega-menu__grid {
     grid-template-columns: 1fr !important;
     width: 100% !important;
-    padding: var(--padding-md) !important;
+    padding: 0 var(--padding-md) !important;
   }
 
   .menu-list__submenu .mega-menu__column {
