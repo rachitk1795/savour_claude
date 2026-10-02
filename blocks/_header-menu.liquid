@@ -813,6 +813,33 @@
   .menu-list__list-item:not(:has([aria-expanded='true'])) > .menu-list__submenu product-component {
     display: none;
   }
+    /* Custom: anchored (non full-width) Catalog dropdown */
+  .menu-list__list-item {
+    position: relative;
+  }
+
+  .menu-list__list-item:where(:not([slot='overflow'])) > .menu-list__submenu {
+    width: max-content !important;
+    max-width: 280px !important;
+    min-width: 200px !important;
+    inset-inline-start: 0 !important;
+    padding-inline: 0 !important;
+  }
+
+  .menu-list__submenu .mega-menu {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .menu-list__submenu .mega-menu__grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    padding: var(--padding-md) !important;
+  }
+
+  .menu-list__submenu .mega-menu__column {
+    grid-column: 1 !important;
+  }
 {% endstylesheet %}
 
 {% schema %}
