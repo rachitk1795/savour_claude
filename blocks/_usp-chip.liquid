@@ -1,0 +1,59 @@
+{% assign block_settings = block.settings %}
+
+<div class="usp-chip" {{ block.shopify_attributes }}>
+  {% if block_settings.icon != blank %}
+    <span class="usp-chip__icon" aria-hidden="true">{{ block_settings.icon }}</span>
+  {% endif %}
+  {% if block_settings.label != blank %}
+    <span class="usp-chip__label">{{ block_settings.label }}</span>
+  {% endif %}
+</div>
+
+{% stylesheet %}
+  .usp-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 1.4rem;
+    border-radius: var(--style-border-radius-sm, 10px);
+    background-color: #1F3A30;
+    border: 1px solid #2C4C40;
+  }
+
+  .usp-chip__icon {
+    font-size: 1.4rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .usp-chip__label {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #FBF8F1;
+    white-space: nowrap;
+  }
+
+  @media screen and (max-width: 480px) {
+    .usp-chip {
+      padding: 0.8rem 1.1rem;
+      flex: 1 1 calc(50% - 0.4rem);
+      justify-content: center;
+    }
+
+    .usp-chip__label {
+      white-space: normal;
+      text-align: center;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "USP chip",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "icon", "label": "Icon or emoji", "default": "✓" },
+    { "type": "text", "id": "label", "label": "Label", "default": "Never soggy" }
+  ]
+}
+{% endschema %}

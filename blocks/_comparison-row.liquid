@@ -1,0 +1,93 @@
+{% assign block_settings = block.settings %}
+
+<div class="comparison-table-row" {{ block.shopify_attributes }}>
+  {% if block_settings.feature != blank %}
+    <div class="comparison-table-row__label">{{ block_settings.feature }}</div>
+  {% endif %}
+
+  <div class="comparison-table-row__cells">
+    <div class="comparison-table-row__cell">
+      {% case block_settings.alt_status %}
+        {% when 'available' %}
+          <span class="svg-wrapper icon-success">{{- 'icon-available.svg' | inline_asset_content -}}</span>
+        {% when 'unavailable' %}
+          <span class="svg-wrapper icon-error">{{- 'icon-unavailable.svg' | inline_asset_content -}}</span>
+        {% when 'warning' %}
+          <span class="svg-wrapper">{{- 'icon-warning.svg' | inline_asset_content -}}</span>
+      {% endcase %}
+      <span>{{ block_settings.alt_value }}</span>
+    </div>
+
+    <div class="comparison-table-row__cell">
+      {% case block_settings.pla_status %}
+        {% when 'available' %}
+          <span class="svg-wrapper icon-success">{{- 'icon-available.svg' | inline_asset_content -}}</span>
+        {% when 'unavailable' %}
+          <span class="svg-wrapper icon-error">{{- 'icon-unavailable.svg' | inline_asset_content -}}</span>
+        {% when 'warning' %}
+          <span class="svg-wrapper">{{- 'icon-warning.svg' | inline_asset_content -}}</span>
+      {% endcase %}
+      <span>{{ block_settings.pla_value }}</span>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Comparison row",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "feature",
+      "label": "Row label",
+      "default": "Feature name",
+      "info": "Small caption shown above the two values, e.g. \"Cold drinks\". Leave blank to hide it."
+    },
+    {
+      "type": "header",
+      "content": "Paper straw"
+    },
+    {
+      "type": "text",
+      "id": "alt_value",
+      "label": "Value",
+      "default": "Value"
+    },
+    {
+      "type": "select",
+      "id": "alt_status",
+      "label": "Icon",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "available", "label": "Check" },
+        { "value": "unavailable", "label": "Cross" },
+        { "value": "warning", "label": "Warning" }
+      ],
+      "default": "unavailable"
+    },
+    {
+      "type": "header",
+      "content": "OrganiPaks PLA"
+    },
+    {
+      "type": "text",
+      "id": "pla_value",
+      "label": "Value",
+      "default": "Value"
+    },
+    {
+      "type": "select",
+      "id": "pla_status",
+      "label": "Icon",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "available", "label": "Check" },
+        { "value": "unavailable", "label": "Cross" },
+        { "value": "warning", "label": "Warning" }
+      ],
+      "default": "available"
+    }
+  ]
+}
+{% endschema %}

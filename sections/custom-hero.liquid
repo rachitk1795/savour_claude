@@ -1,0 +1,344 @@
+{% assign s = section.settings %}
+
+<section
+  class="custom-hero"
+  style="background-color: {{ s.background_color }}; color: {{ s.text_color }};"
+>
+  <div class="custom-hero__inner">
+    <div class="custom-hero__content">
+      {% if s.eyebrow != blank %}
+        <p class="custom-hero__eyebrow" style="color: {{ s.eyebrow_color }};">{{ s.eyebrow }}</p>
+      {% endif %}
+
+      {% if s.heading != blank %}
+        <h1 class="custom-hero__heading">{{ s.heading }}</h1>
+      {% endif %}
+
+      {% if s.subheading != blank %}
+        <p class="custom-hero__subheading">{{ s.subheading }}</p>
+      {% endif %}
+
+      {% if s.body != blank %}
+        <div class="custom-hero__body">{{ s.body }}</div>
+      {% endif %}
+
+      {% if s.primary_button_label != blank or s.secondary_button_label != blank %}
+        <div class="custom-hero__buttons">
+          {% if s.primary_button_label != blank %}
+            <a
+              href="{{ s.primary_button_link | default: '#' }}"
+              class="custom-hero__button custom-hero__button--primary"
+            >
+              {{ s.primary_button_label }}
+            </a>
+          {% endif %}
+          {% if s.secondary_button_label != blank %}
+            <a
+              href="{{ s.secondary_button_link | default: '#' }}"
+              class="custom-hero__button custom-hero__button--secondary"
+              style="color: {{ s.text_color }}; border-color: {{ s.text_color }};"
+            >
+              {{ s.secondary_button_label }}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <div class="custom-hero__chips">
+          {% content_for 'blocks' %}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if s.illustration_image != blank %}
+      <div class="custom-hero__media">
+        <div class="custom-hero__media-card">
+          {% if s.illustration_overlay_top_text != blank %}
+            <p class="custom-hero__media-overlay-top">{{ s.illustration_overlay_top_text }}</p>
+          {% endif %}
+          <div class="custom-hero__media-image-wrap">
+            <img
+              src="{{ s.illustration_image | image_url: width: 1200 }}"
+              alt="{{ s.illustration_image.alt | escape }}"
+              class="custom-hero__media-image"
+              width="{{ s.illustration_image.width }}"
+              height="{{ s.illustration_image.height }}"
+              loading="eager"
+            >
+            {% if s.illustration_badge_text != blank %}
+              <span class="custom-hero__media-badge">{{ s.illustration_badge_text }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .custom-hero {
+    width: 100%;
+    padding: 4.8rem 0;
+  }
+
+  .custom-hero__inner {
+    max-width: var(--page-width, 1280px);
+    margin: 0 auto;
+    padding: 0 clamp(2rem, 5vw, 5rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(2.4rem, 5vw, 5rem);
+    align-items: center;
+  }
+
+  .custom-hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+    min-width: 0;
+  }
+
+  .custom-hero__eyebrow {
+    margin: 0;
+    font-family: var(--font-accent--family);
+    font-weight: var(--font-accent--weight);
+    font-size: 1.3rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+
+  .custom-hero__heading {
+    margin: 0;
+    font-family: var(--font-h1--family);
+    font-weight: 700;
+    font-size: clamp(3.6rem, 6vw, 6.4rem);
+    line-height: 1.05;
+    color: inherit;
+  }
+
+  .custom-hero__subheading {
+    margin: 0;
+    font-size: clamp(1.8rem, 2vw, 2.2rem);
+    font-weight: 600;
+  }
+
+  .custom-hero__body {
+    margin: 0;
+    max-width: 46ch;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+
+  .custom-hero__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.8rem;
+  }
+
+  .custom-hero__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.3rem 2.4rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-decoration: none;
+    min-height: var(--minimum-touch-target, 44px);
+    white-space: nowrap;
+  }
+
+  .custom-hero__button--primary {
+    background-color: var(--color-primary-button-background);
+    color: var(--color-primary-button-text);
+  }
+
+  .custom-hero__button--secondary {
+    background-color: transparent;
+    border: 1.5px solid;
+  }
+
+  .custom-hero__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.6rem;
+  }
+
+  .custom-hero__media {
+    min-width: 0;
+  }
+
+  .custom-hero__media-card {
+    background-color: var(--color-background);
+    border-radius: var(--style-border-radius-sm, 16px);
+    padding: 2.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  .custom-hero__media-overlay-top {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--color-foreground);
+    text-align: center;
+  }
+
+  .custom-hero__media-image-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .custom-hero__media-image {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 52rem;
+    margin: 0 auto;
+    border-radius: calc(var(--style-border-radius-sm, 16px) - 8px);
+  }
+
+  .custom-hero__media-badge {
+    position: absolute;
+    bottom: 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.9rem 1.8rem;
+    border-radius: 999px;
+    background-color: #C99A2E;
+    color: #1D3932;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    max-width: calc(100% - 2rem);
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Tablet and below: stack media under content */
+  @media screen and (max-width: 989px) {
+    .custom-hero {
+      padding: 3.6rem 0;
+    }
+
+    .custom-hero__inner {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .custom-hero__media {
+      order: -1;
+    }
+
+    .custom-hero__heading {
+      font-size: clamp(3rem, 8vw, 4.4rem);
+    }
+  }
+
+  /* Small phones: tighten spacing and type further */
+  @media screen and (max-width: 480px) {
+    .custom-hero {
+      padding: 2.8rem 0;
+    }
+
+    .custom-hero__inner {
+      padding: 0 1.6rem;
+      gap: 2rem;
+    }
+
+    .custom-hero__content {
+      gap: 1rem;
+    }
+
+    .custom-hero__heading {
+      font-size: clamp(2.8rem, 9vw, 3.6rem);
+    }
+
+    .custom-hero__body {
+      font-size: 1.5rem;
+    }
+
+    .custom-hero__buttons {
+      width: 100%;
+    }
+
+    .custom-hero__button {
+      flex: 1 1 auto;
+      padding: 1.2rem 1.6rem;
+      font-size: 1.4rem;
+    }
+
+    .custom-hero__media-card {
+      padding: 1.4rem;
+      gap: 1.2rem;
+    }
+
+    .custom-hero__media-overlay-top {
+      font-size: 1.3rem;
+    }
+
+    .custom-hero__media-image {
+      max-height: 36rem;
+    }
+
+    .custom-hero__media-badge {
+      bottom: 1rem;
+      padding: 0.7rem 1.4rem;
+      font-size: 1.2rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Custom hero",
+  "tag": "section",
+  "blocks": [
+    { "type": "_usp-chip" }
+  ],
+  "settings": [
+    { "type": "header", "content": "Text" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Corn-starch PLA straws · Made for HORECA" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Straws made from corn." },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Not paper. Not conventional plastic." },
+    { "type": "textarea", "id": "body", "label": "Body text", "default": "Compostable, certified and built to stay firm till the last sip. Made for cafés, restaurants and cloud kitchens that want better than a soggy straw." },
+    { "type": "header", "content": "Buttons" },
+    { "type": "text", "id": "primary_button_label", "label": "Primary button label", "default": "Get bulk pricing →" },
+    { "type": "url", "id": "primary_button_link", "label": "Primary button link" },
+    { "type": "text", "id": "secondary_button_label", "label": "Secondary button label", "default": "Shop small packs" },
+    { "type": "url", "id": "secondary_button_link", "label": "Secondary button link" },
+    { "type": "header", "content": "Illustration" },
+    { "type": "image_picker", "id": "illustration_image", "label": "Image" },
+    { "type": "text", "id": "illustration_overlay_top_text", "label": "Overlay text (top of image)", "default": "The last sip should still feel good." },
+    { "type": "text", "id": "illustration_badge_text", "label": "Badge text (bottom of image)", "default": "No soggy endings." },
+    { "type": "header", "content": "Appearance" },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#14261F" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#FBF8F1" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow color", "default": "#D4E8E2" }
+  ],
+  "presets": [
+    {
+      "name": "Custom hero",
+      "category": "Hero",
+      "blocks": {
+        "chip-1": { "type": "_usp-chip", "settings": { "icon": "✓", "label": "Never soggy" } },
+        "chip-2": { "type": "_usp-chip", "settings": { "icon": "🌽", "label": "Corn-based" } },
+        "chip-3": { "type": "_usp-chip", "settings": { "icon": "♻️", "label": "Compostable" } },
+        "chip-4": { "type": "_usp-chip", "settings": { "icon": "✓", "label": "Certified" } }
+      },
+      "block_order": ["chip-1", "chip-2", "chip-3", "chip-4"]
+    }
+  ]
+}
+{% endschema %}
