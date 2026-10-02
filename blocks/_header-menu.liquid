@@ -813,9 +813,17 @@
   .menu-list__list-item:not(:has([aria-expanded='true'])) > .menu-list__submenu product-component {
     display: none;
   }
-    /* Custom: anchored (non full-width) Catalog dropdown */
+  /* Custom: anchored (non full-width) Catalog dropdown */
   .menu-list__list-item {
     position: relative;
+  }
+
+  /* Stop the header's full-width backdrop from stretching down when the menu opens */
+  .header__underlay-open {
+    height: var(--header-height) !important;
+  }
+  .header__underlay-open::after {
+    box-shadow: none !important;
   }
 
   .menu-list__list-item:where(:not([slot='overflow'])) > .menu-list__submenu {
@@ -824,6 +832,10 @@
     min-width: 200px !important;
     inset-inline-start: 0 !important;
     padding-inline: 0 !important;
+    background-color: var(--color-background) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--shadow-popover) !important;
+    overflow: hidden;
   }
 
   .menu-list__submenu .mega-menu {
