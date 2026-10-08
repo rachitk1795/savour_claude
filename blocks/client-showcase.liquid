@@ -1,0 +1,306 @@
+{%- doc -%}
+  Client showcase panel for the "Custom straws" homepage section.
+  A pinstriped colour field with a photo card on it. Tapping a client name
+  switches the card and changes the colour of the whole field.
+  Add clients as blocks inside this block (needs blocks/_client-showcase-item.liquid).
+{%- enddoc -%}
+
+{%- liquid
+  assign s = block.settings
+  assign clients = block.blocks
+  assign first = clients.first
+  assign first_color = first.settings.color | default: '#03754B'
+  assign first_brightness = first_color | color_brightness
+  assign first_ink = '#FBF8F1'
+  if first_brightness > 150
+    assign first_ink = '#1D3932'
+  endif
+-%}
+
+<div
+  class="cs-show"
+  data-cs-show="{{ block.id }}"
+  style="--cs-field: {{ first_color }}; --cs-ink: {{ first_ink }}; --cs-min-height: {{ s.min_height }}px;"
+  {{ block.shopify_attributes }}
+>
+  {%- if clients.size == 0 -%}
+    <p class="cs-show__empty">Add a client to this block to get started.</p>
+  {%- else -%}
+
+    <div class="cs-show__stage">
+      {%- for client in clients -%}
+        {%- assign c = client.settings -%}
+        <figure
+          class="cs-show__card"
+          data-cs-card="{{ client.id }}"
+          {% unless forloop.first %}hidden{% endunless %}
+          {{ client.shopify_attributes }}
+        >
+          <div class="cs-show__photo">
+            {%- if c.photo != blank -%}
+              {{
+                c.photo
+                | image_url: width: 900
+                | image_tag: loading: 'lazy', widths: '450, 700, 900', sizes: '(min-width: 750px) 320px, 80vw', alt: c.name
+              }}
+            {%- else -%}
+              <span class="cs-show__straw cs-show__straw--1" style="background-color: {{ c.color | default: '#03754B' }};"></span>
+              <span class="cs-show__straw cs-show__straw--2" style="background-color: {{ c.color | default: '#03754B' }};"></span>
+              <span class="cs-show__straw cs-show__straw--3" style="background-color: {{ c.color | default: '#03754B' }};"></span>
+            {%- endif -%}
+          </div>
+          <figcaption class="cs-show__caption">
+            <span class="cs-show__name">{{ c.name | escape }}</span>
+            {%- if c.city != blank -%}
+              <span class="cs-show__meta">{{ c.city | escape }}</span>
+            {%- endif -%}
+            {%- if c.caption != blank -%}
+              <span class="cs-show__meta">{{ c.caption | escape }}</span>
+            {%- endif -%}
+            {%- if s.show_colour_code -%}
+              <span class="cs-show__meta">Custom colour {{ c.color | default: '#03754B' | upcase }}</span>
+            {%- endif -%}
+          </figcaption>
+        </figure>
+      {%- endfor -%}
+    </div>
+
+    {%- if clients.size > 1 -%}
+      <div class="cs-show__picker" role="group" aria-label="Choose a client">
+        {%- for client in clients -%}
+          {%- assign c = client.settings -%}
+          {%- assign color = c.color | default: '#03754B' -%}
+          {%- assign brightness = color | color_brightness -%}
+          {%- assign ink = '#FBF8F1' -%}
+          {%- if brightness > 150 -%}
+            {%- assign ink = '#1D3932' -%}
+          {%- endif -%}
+          <button
+            type="button"
+            class="cs-show__pill"
+            data-cs-pill="{{ client.id }}"
+            data-cs-color="{{ color }}"
+            data-cs-ink="{{ ink }}"
+            aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"
+          >
+            {{- c.name | escape -}}
+          </button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  {%- endif -%}
+</div>
+
+<script>
+  (function () {
+    var root = document.querySelector('[data-cs-show="{{ block.id }}"]');
+    if (!root) return;
+
+    function select(id) {
+      var pills = root.querySelectorAll('[data-cs-pill]');
+      var cards = root.querySelectorAll('[data-cs-card]');
+      cards.forEach(function (card) {
+        card.hidden = card.getAttribute('data-cs-card') !== id;
+      });
+      pills.forEach(function (pill) {
+        var on = pill.getAttribute('data-cs-pill') === id;
+        pill.setAttribute('aria-pressed', on ? 'true' : 'false');
+        if (on) {
+          root.style.setProperty('--cs-field', pill.getAttribute('data-cs-color'));
+          root.style.setProperty('--cs-ink', pill.getAttribute('data-cs-ink'));
+        }
+      });
+    }
+
+    root.addEventListener('click', function (event) {
+      var pill = event.target.closest('[data-cs-pill]');
+      if (pill) select(pill.getAttribute('data-cs-pill'));
+    });
+
+    // In the theme editor, clicking a client in the sidebar shows that client.
+    document.addEventListener('shopify:block:select', function (event) {
+      if (root.contains(event.target)) {
+        var card = event.target.closest('[data-cs-card]');
+        if (card) select(card.getAttribute('data-cs-card'));
+      }
+    });
+  })();
+</script>
+
+{% stylesheet %}
+  .cs-show {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3.2rem;
+    width: 100%;
+    min-height: var(--cs-min-height, 640px);
+    padding: 5.6rem 3.2rem;
+    background-color: var(--cs-field, #03754B);
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0,
+      rgba(255, 255, 255, 0) 30px,
+      rgba(255, 255, 255, 0.13) 30px,
+      rgba(255, 255, 255, 0.13) 32px
+    );
+    color: var(--cs-ink, #FBF8F1);
+    transition: background-color 0.5s ease;
+  }
+
+  .cs-show__empty {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  .cs-show__stage {
+    width: 100%;
+    max-width: 32rem;
+  }
+
+  .cs-show__card {
+    margin: 0;
+    padding: 1.4rem 1.4rem 2.2rem;
+    background: #FBF8F1;
+    color: #1D3932;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+  }
+
+  .cs-show__card[hidden] {
+    display: none;
+  }
+
+  .cs-show__photo {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: #E9E2CE;
+  }
+
+  .cs-show__photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cs-show__straw {
+    position: absolute;
+    top: 10%;
+    width: 1.6rem;
+    height: 90%;
+    border-radius: 0.8rem;
+    transform: rotate(10deg);
+  }
+
+  .cs-show__straw--1 { left: 38%; }
+  .cs-show__straw--2 { left: 47%; }
+  .cs-show__straw--3 { left: 56%; }
+
+  .cs-show__caption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.8rem 0.6rem 0;
+  }
+
+  .cs-show__name {
+    font-family: var(--font-heading--family), 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 2rem;
+    color: #1D3932;
+  }
+
+  .cs-show__meta {
+    font-family: var(--font-body--family), 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    color: #4B6A60;
+  }
+
+  .cs-show__picker {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 48rem;
+  }
+
+  .cs-show__pill {
+    appearance: none;
+    cursor: pointer;
+    padding: 1rem 1.8rem;
+    border: 1px solid var(--cs-ink, #FBF8F1);
+    border-radius: 100px;
+    background: transparent;
+    color: var(--cs-ink, #FBF8F1);
+    font-family: var(--font-accent--family), 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 1.2;
+  }
+
+  .cs-show__pill[aria-pressed='true'] {
+    background: #FBF8F1;
+    border-color: #FBF8F1;
+    color: #1D3932;
+  }
+
+  .cs-show__pill:focus-visible {
+    outline: 2px solid #C99A2E;
+    outline-offset: 3px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .cs-show {
+      min-height: 0;
+      padding: 4rem 2rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cs-show {
+      transition: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Client showcase",
+  "tag": null,
+  "settings": [
+    {
+      "type": "range",
+      "id": "min_height",
+      "label": "Minimum height",
+      "min": 400,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 640
+    },
+    {
+      "type": "checkbox",
+      "id": "show_colour_code",
+      "label": "Show colour code on the card",
+      "default": true
+    }
+  ],
+  "blocks": [
+    { "type": "_client-showcase-item" }
+  ],
+  "presets": [
+    {
+      "name": "Client showcase",
+      "blocks": [
+        { "type": "_client-showcase-item", "settings": { "name": "Client one", "city": "City", "color": "#03754B" } },
+        { "type": "_client-showcase-item", "settings": { "name": "Client two", "city": "City", "color": "#B5532F" } },
+        { "type": "_client-showcase-item", "settings": { "name": "Client three", "city": "City", "color": "#1F3A5F" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

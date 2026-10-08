@@ -1,0 +1,46 @@
+{%- doc -%}
+  One client inside the Client showcase block.
+  Its content is drawn by the parent block (blocks/client-showcase.liquid).
+{%- enddoc -%}
+
+{% comment %}This block only holds the settings for one client.{% endcomment %}
+
+{% schema %}
+{
+  "name": "Client",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Client name",
+      "default": "Client name"
+    },
+    {
+      "type": "text",
+      "id": "city",
+      "label": "City",
+      "default": "City"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Extra line (optional)",
+      "info": "For example: Matte finish, 8mm straw."
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Straw colour",
+      "info": "Also sets the colour of the whole panel when this client is chosen.",
+      "default": "#03754B"
+    },
+    {
+      "type": "image_picker",
+      "id": "photo",
+      "label": "Photo of their straws",
+      "info": "Landscape, around 4:3 works best. If empty, a drawn straw in the colour above is shown."
+    }
+  ]
+}
+{% endschema %}
