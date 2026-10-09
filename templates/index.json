@@ -2519,7 +2519,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p><strong>From 50k Pcs</strong><br/>Production run</p>",
+                        "text": "<p><strong>From 50k Pcs</strong><br/>MOQ</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
