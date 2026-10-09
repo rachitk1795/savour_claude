@@ -136,6 +136,15 @@
     outline: 2px solid #C99A2E;
     outline-offset: 3px;
   }
+
+  /* On phones: two names per row. A lone last name stays half width, centred. */
+  @media screen and (max-width: 749px) {
+    .cs-pill {
+      flex: 0 1 calc(50% - 0.5rem);
+      padding: 1rem 1rem;
+      text-align: center;
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}
