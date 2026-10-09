@@ -2308,7 +2308,11 @@
                   "name": "Client showcase",
                   "settings": {
                     "background_color": "#1d3932",
-                    "min_height": 640
+                    "min_height": 640,
+                    "pill_font": "montserrat_n5",
+                    "pill_size": 13,
+                    "pill_letter_spacing": 0.4,
+                    "pill_case": "none"
                   },
                   "blocks": {
                     "client_showcase_item_9X9pJh": {
@@ -2632,7 +2636,7 @@
                   "type": "button",
                   "name": "t:names.button",
                   "settings": {
-                    "label": "Reques a quote",
+                    "label": "Request a quote",
                     "link": "shopify://collections/all",
                     "open_in_new_tab": false,
                     "style_class": "button",
