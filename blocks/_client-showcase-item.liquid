@@ -1,9 +1,142 @@
 {%- doc -%}
-  One client inside the Client showcase block.
-  Its content is drawn by the parent block (blocks/client-showcase.liquid).
+  One client inside the Client showcase block: draws its own card
+  and its own name pill. The parent (blocks/client-showcase.liquid)
+  switches between them.
 {%- enddoc -%}
 
-{% comment %}This block only holds the settings for one client.{% endcomment %}
+{%- liquid
+  assign c = block.settings
+  assign color = c.color | default: '#03754B'
+-%}
+
+<div class="cs-item" {{ block.shopify_attributes }}>
+
+  <figure class="cs-card" data-cs-card="{{ block.id }}">
+    <div class="cs-card__photo">
+      {%- if c.photo != blank -%}
+        {{
+          c.photo
+          | image_url: width: 900
+          | image_tag: loading: 'lazy', widths: '450, 700, 900', sizes: '(min-width: 750px) 360px, 80vw', alt: c.name
+        }}
+      {%- else -%}
+        <span class="cs-card__straw cs-card__straw--1" style="background-color: {{ color }};"></span>
+        <span class="cs-card__straw cs-card__straw--2" style="background-color: {{ color }};"></span>
+        <span class="cs-card__straw cs-card__straw--3" style="background-color: {{ color }};"></span>
+      {%- endif -%}
+    </div>
+    <figcaption class="cs-card__caption">
+      <span class="cs-card__name">{{ c.name | escape }}</span>
+      {%- if c.city != blank -%}
+        <span class="cs-card__meta">{{ c.city | escape }}</span>
+      {%- endif -%}
+      {%- if c.caption != blank -%}
+        <span class="cs-card__meta">{{ c.caption | escape }}</span>
+      {%- endif -%}
+      {%- if c.show_colour_code -%}
+        <span class="cs-card__meta">Custom colour {{ color | upcase }}</span>
+      {%- endif -%}
+    </figcaption>
+  </figure>
+
+  <button type="button" class="cs-pill" data-cs-pill="{{ block.id }}" aria-pressed="false">
+    {{- c.name | escape -}}
+  </button>
+
+</div>
+
+{% stylesheet %}
+  .cs-item {
+    display: contents;
+  }
+
+  .cs-card {
+    display: none;
+    order: -1;
+    flex: 0 0 100%;
+    box-sizing: border-box;
+    margin: 0 0 2.2rem;
+    padding: 1.4rem 1.4rem 2.2rem;
+    background: #FBF8F1;
+    color: #1D3932;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+  }
+
+  .cs-card.is-active {
+    display: block;
+  }
+
+  .cs-card__photo {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: #E9E2CE;
+  }
+
+  .cs-card__photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cs-card__straw {
+    position: absolute;
+    top: 10%;
+    width: 1.6rem;
+    height: 90%;
+    border-radius: 0.8rem;
+    transform: rotate(10deg);
+  }
+
+  .cs-card__straw--1 { left: 38%; }
+  .cs-card__straw--2 { left: 47%; }
+  .cs-card__straw--3 { left: 56%; }
+
+  .cs-card__caption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.8rem 0.6rem 0;
+  }
+
+  .cs-card__name {
+    font-family: var(--font-heading--family), 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 2rem;
+    color: #1D3932;
+  }
+
+  .cs-card__meta {
+    font-family: var(--font-body--family), 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    color: #4B6A60;
+  }
+
+  .cs-pill {
+    appearance: none;
+    cursor: pointer;
+    padding: 1rem 1.8rem;
+    border: 1px solid #FBF8F1;
+    border-radius: 100px;
+    background: transparent;
+    color: #FBF8F1;
+    font-family: var(--font-accent--family), 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 1.2;
+  }
+
+  .cs-pill[aria-pressed='true'] {
+    background: #FBF8F1;
+    color: #1D3932;
+  }
+
+  .cs-pill:focus-visible {
+    outline: 2px solid #C99A2E;
+    outline-offset: 3px;
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
@@ -29,17 +162,22 @@
       "info": "For example: Matte finish, 8mm straw."
     },
     {
-      "type": "color",
-      "id": "color",
-      "label": "Straw colour",
-      "info": "Also sets the colour of the whole panel when this client is chosen.",
-      "default": "#03754B"
-    },
-    {
       "type": "image_picker",
       "id": "photo",
       "label": "Photo of their straws",
-      "info": "Landscape, around 4:3 works best. If empty, a drawn straw in the colour above is shown."
+      "info": "Landscape, around 4:3 works best. If empty, a drawn straw in the colour below is shown."
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Straw colour",
+      "default": "#03754B"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_colour_code",
+      "label": "Show colour code on the card",
+      "default": false
     }
   ]
 }
