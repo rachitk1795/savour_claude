@@ -2314,10 +2314,10 @@
                     "client_showcase_item_9X9pJh": {
                       "type": "_client-showcase-item",
                       "settings": {
-                        "name": "Kokoy",
-                        "city": "Delhi",
+                        "name": "Cafe Nola",
+                        "city": "Jaipur",
                         "caption": "",
-                        "photo": "shopify://shop_images/6mm-juices-mocktails_a6aba288-fc5a-4d5a-baa7-08977c72263f.png",
+                        "photo": "shopify://shop_images/organipaks-marble-coffee-v2.jpg",
                         "color": "#03754b",
                         "show_colour_code": false
                       },
@@ -3526,7 +3526,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/ChatGPT_Image_1_Oct_2026_02_48_11.png",
+                "image": "shopify://shop_images/ChatGPT_Image_10_Oct_2026_03_03_51.png",
                 "link": "",
                 "image_ratio": "adapt",
                 "width": "custom",
@@ -3540,7 +3540,7 @@
                 "border_color": "",
                 "border_radius": 0,
                 "padding-block-start": 0,
-                "padding-block-end": 0,
+                "padding-block-end": 24,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
