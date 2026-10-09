@@ -2253,7 +2253,7 @@
             "border_width": 1,
             "border_opacity": 100,
             "border_color": "",
-            "border_radius": 0,
+            "border_radius": 7,
             "link": "",
             "open_in_new_tab": false,
             "placeholder": "",
@@ -2307,8 +2307,8 @@
                   "type": "client-showcase",
                   "name": "Client showcase",
                   "settings": {
-                    "min_height": 640,
-                    "show_colour_code": true
+                    "background_color": "#1d3932",
+                    "min_height": 640
                   },
                   "blocks": {
                     "client_showcase_item_9X9pJh": {
@@ -2317,8 +2317,9 @@
                         "name": "Kokoy",
                         "city": "Delhi",
                         "caption": "",
+                        "photo": "shopify://shop_images/6mm-juices-mocktails_a6aba288-fc5a-4d5a-baa7-08977c72263f.png",
                         "color": "#03754b",
-                        "photo": "shopify://shop_images/6mm-juices-mocktails_a6aba288-fc5a-4d5a-baa7-08977c72263f.png"
+                        "show_colour_code": false
                       },
                       "blocks": {}
                     },
@@ -2328,7 +2329,8 @@
                         "name": "Client two",
                         "city": "City",
                         "caption": "",
-                        "color": "#b5532f"
+                        "color": "#b5532f",
+                        "show_colour_code": false
                       },
                       "blocks": {}
                     },
@@ -2338,7 +2340,8 @@
                         "name": "Client three",
                         "city": "City",
                         "caption": "",
-                        "color": "#1f3a5f"
+                        "color": "#1f3a5f",
+                        "show_colour_code": false
                       },
                       "blocks": {}
                     }
@@ -2365,7 +2368,7 @@
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "flex-start",
                 "vertical_alignment_flex_direction_column": "center",
-                "gap": 12,
+                "gap": 32,
                 "width": "fill",
                 "custom_width": 100,
                 "width_mobile": "fill",
@@ -2393,7 +2396,265 @@
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
-              "blocks": {}
+              "blocks": {
+                "text_WpdrbE": {
+                  "type": "text",
+                  "name": "t:names.heading",
+                  "settings": {
+                    "text": "<h2>Your café has a brand.&nbsp;<br/>Your straw should too.</h2>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "{{ settings.color_palette.foreground }}",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_tWaaCd": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<h5><strong>Your logo, your colour, your straw.</strong> Compostable and made to order.</h5>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "{{ settings.color_palette.foreground }}",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_BgweVR": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Already on the tables of more than 100+ Cafes.</p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h6",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "{{ settings.color_palette.color1 }}",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "group_dQUVUT": {
+                  "type": "group",
+                  "name": "t:names.group",
+                  "settings": {
+                    "content_direction": "row",
+                    "vertical_on_mobile": false,
+                    "horizontal_alignment": "center",
+                    "vertical_alignment": "center",
+                    "align_baseline": false,
+                    "horizontal_alignment_flex_direction_column": "flex-start",
+                    "vertical_alignment_flex_direction_column": "center",
+                    "gap": 12,
+                    "width": "fill",
+                    "custom_width": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "background_media": "none",
+                    "background_color": "",
+                    "video_position": "cover",
+                    "background_image_position": "cover",
+                    "toggle_overlay": false,
+                    "overlay_color": "#00000026",
+                    "overlay_style": "solid",
+                    "gradient_direction": "to top",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_color": "",
+                    "border_radius": 0,
+                    "link": "",
+                    "open_in_new_tab": false,
+                    "placeholder": "",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "text_9eP6AG": {
+                      "type": "text",
+                      "name": "t:names.text",
+                      "settings": {
+                        "text": "<p><strong>From 50k Pcs</strong><br/>Production run</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    },
+                    "divider_MtGd3D": {
+                      "type": "_divider",
+                      "name": "t:names.divider",
+                      "settings": {
+                        "thickness": 1,
+                        "corner_radius": "square",
+                        "divider_color": "",
+                        "width_percent": 100,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0
+                      },
+                      "blocks": {}
+                    },
+                    "text_caQFYd": {
+                      "type": "text",
+                      "name": "t:names.text",
+                      "settings": {
+                        "text": "<p><strong>3 weeks</strong><br/>Lead time</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    },
+                    "divider_iKVk6a": {
+                      "type": "_divider",
+                      "name": "t:names.divider",
+                      "settings": {
+                        "thickness": 1,
+                        "corner_radius": "square",
+                        "divider_color": "",
+                        "width_percent": 100,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0
+                      },
+                      "blocks": {}
+                    },
+                    "text_R9PNBr": {
+                      "type": "text",
+                      "name": "t:names.text",
+                      "settings": {
+                        "text": "<p><strong>Compostable</strong><br/>PLA</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_9eP6AG",
+                    "divider_MtGd3D",
+                    "text_caQFYd",
+                    "divider_iKVk6a",
+                    "text_R9PNBr"
+                  ]
+                },
+                "button_N7wQpe": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Reques a quote",
+                    "link": "shopify://collections/all",
+                    "open_in_new_tab": false,
+                    "style_class": "button",
+                    "custom_button_background": "{{ settings.color_palette.foreground }}",
+                    "custom_button_text": "{{ settings.color_palette.background }}",
+                    "custom_button_border": "{{ settings.color_palette.background }}",
+                    "link_text_color": "",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_WpdrbE",
+                "text_tWaaCd",
+                "text_BgweVR",
+                "group_dQUVUT",
+                "button_N7wQpe"
+              ]
             }
           },
           "block_order": [
