@@ -1,0 +1,263 @@
+{%- doc -%}
+  Left-hand copy column for the "Custom straws" homepage section:
+  headline, short description, trust line, three key facts and a quote button.
+  Place it inside a Group block, next to whatever you build on the right.
+{%- enddoc -%}
+
+{%- liquid
+  assign s = block.settings
+  assign scheme = s.scheme
+-%}
+
+<div class="cs-copy cs-copy--{{ scheme }}" {{ block.shopify_attributes }}>
+
+  {%- if s.heading != blank -%}
+    <h2 class="cs-copy__heading">{{ s.heading | escape }}</h2>
+  {%- endif -%}
+
+  {%- if s.description != blank -%}
+    <p class="cs-copy__description">{{ s.description | escape }}</p>
+  {%- endif -%}
+
+  {%- if s.trust_line != blank -%}
+    <p class="cs-copy__trust">{{ s.trust_line | escape }}</p>
+  {%- endif -%}
+
+  {%- if s.fact_1_value != blank or s.fact_2_value != blank or s.fact_3_value != blank -%}
+    <div class="cs-copy__facts">
+      {%- if s.fact_1_value != blank -%}
+        <div class="cs-copy__fact">
+          <span class="cs-copy__fact-value">{{ s.fact_1_value | escape }}</span>
+          <span class="cs-copy__fact-label">{{ s.fact_1_label | escape }}</span>
+        </div>
+      {%- endif -%}
+      {%- if s.fact_2_value != blank -%}
+        <div class="cs-copy__fact">
+          <span class="cs-copy__fact-value">{{ s.fact_2_value | escape }}</span>
+          <span class="cs-copy__fact-label">{{ s.fact_2_label | escape }}</span>
+        </div>
+      {%- endif -%}
+      {%- if s.fact_3_value != blank -%}
+        <div class="cs-copy__fact">
+          <span class="cs-copy__fact-value">{{ s.fact_3_value | escape }}</span>
+          <span class="cs-copy__fact-label">{{ s.fact_3_label | escape }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- if s.button_label != blank -%}
+    <div class="cs-copy__actions">
+      <a class="cs-copy__button" href="{{ s.button_link | default: '#' }}">{{ s.button_label | escape }}</a>
+      {%- if s.button_note != blank -%}
+        <span class="cs-copy__note">{{ s.button_note | escape }}</span>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+</div>
+
+{% stylesheet %}
+  .cs-copy {
+    --cs-text: #1D3932;
+    --cs-muted: #3D5A52;
+    --cs-line: #C9DDD5;
+    --cs-accent: #03754B;
+    --cs-btn-bg: #1D3932;
+    --cs-btn-text: #FBF8F1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.8rem;
+    width: 100%;
+    color: var(--cs-text);
+  }
+
+  .cs-copy--dark {
+    --cs-text: #FBF8F1;
+    --cs-muted: #C9DDD5;
+    --cs-line: rgba(201, 221, 213, 0.25);
+    --cs-accent: #D4E8E2;
+    --cs-btn-bg: #C99A2E;
+    --cs-btn-text: #1D3932;
+  }
+
+  .cs-copy__heading {
+    margin: 0;
+    max-width: 14em;
+    font-family: var(--font-heading--family), 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: clamp(3.4rem, 4.4vw, 5.6rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--cs-text);
+  }
+
+  .cs-copy__description {
+    margin: 0;
+    max-width: 44rem;
+    font-family: var(--font-body--family), 'Montserrat', sans-serif;
+    font-size: 1.7rem;
+    line-height: 1.65;
+    color: var(--cs-muted);
+  }
+
+  .cs-copy__trust {
+    margin: 0;
+    font-family: var(--font-body--family), 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--cs-accent);
+  }
+
+  .cs-copy__facts {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 48rem;
+    border-top: 1px solid var(--cs-line);
+    border-bottom: 1px solid var(--cs-line);
+  }
+
+  .cs-copy__fact {
+    flex: 1 1 12rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.8rem 1.6rem;
+  }
+
+  .cs-copy__fact + .cs-copy__fact {
+    border-left: 1px solid var(--cs-line);
+  }
+
+  .cs-copy__fact:first-child {
+    padding-left: 0;
+  }
+
+  .cs-copy__fact-value {
+    font-family: var(--font-heading--family), 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1.7rem;
+    color: var(--cs-text);
+  }
+
+  .cs-copy__fact-label {
+    font-family: var(--font-body--family), 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    color: var(--cs-muted);
+  }
+
+  .cs-copy__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.6rem 2.4rem;
+  }
+
+  .cs-copy__button {
+    display: inline-block;
+    padding: 1.7rem 3.6rem;
+    border-radius: 100px;
+    background-color: var(--cs-btn-bg);
+    color: var(--cs-btn-text);
+    font-family: var(--font-accent--family), 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+
+  .cs-copy__button:hover {
+    opacity: 0.88;
+  }
+
+  .cs-copy__button:focus-visible {
+    outline: 2px solid var(--cs-accent);
+    outline-offset: 4px;
+  }
+
+  .cs-copy__note {
+    font-family: var(--font-body--family), 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    color: var(--cs-muted);
+  }
+
+  @media screen and (max-width: 749px) {
+    .cs-copy {
+      gap: 2.4rem;
+    }
+
+    .cs-copy__fact + .cs-copy__fact {
+      border-left: 0;
+    }
+
+    .cs-copy__fact {
+      padding-left: 0;
+      border-bottom: 1px solid var(--cs-line);
+    }
+
+    .cs-copy__fact:last-child {
+      border-bottom: 0;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Custom straws copy",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "scheme",
+      "label": "Colours",
+      "options": [
+        { "value": "light", "label": "For a light background" },
+        { "value": "dark", "label": "For a dark green background" }
+      ],
+      "default": "light"
+    },
+    { "type": "header", "content": "Text" },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Headline",
+      "default": "Your café has a brand. Your straw should too."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Compostable straws made to order in your exact brand colour, for cafés that finish every detail."
+    },
+    {
+      "type": "text",
+      "id": "trust_line",
+      "label": "Trust line",
+      "info": "Leave empty to hide.",
+      "default": "Already on the tables of [N] cafés and restaurants."
+    },
+    { "type": "header", "content": "Key facts (leave a value empty to hide it)" },
+    { "type": "text", "id": "fact_1_value", "label": "Fact 1 value", "default": "From [X] pcs" },
+    { "type": "text", "id": "fact_1_label", "label": "Fact 1 label", "default": "Production run" },
+    { "type": "text", "id": "fact_2_value", "label": "Fact 2 value", "default": "[X] weeks" },
+    { "type": "text", "id": "fact_2_label", "label": "Fact 2 label", "default": "Lead time" },
+    { "type": "text", "id": "fact_3_value", "label": "Fact 3 value", "default": "Compostable" },
+    { "type": "text", "id": "fact_3_label", "label": "Fact 3 label", "default": "PLA" },
+    { "type": "header", "content": "Button" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Request a quote" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    {
+      "type": "text",
+      "id": "button_note",
+      "label": "Note next to button",
+      "info": "Leave empty to hide.",
+      "default": "Sample before you commit"
+    }
+  ],
+  "presets": [
+    { "name": "Custom straws copy" }
+  ]
+}
+{% endschema %}

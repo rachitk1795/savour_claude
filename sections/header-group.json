@@ -18,7 +18,7 @@
           "type": "_announcement",
           "settings": {
             "text": "Free Shipping on Sample kit.",
-            "link": "",
+            "link": "https://organipaks.in/products/organipaks-straws-cutlery-sample-kit",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "weight": "",
