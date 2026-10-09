@@ -73,8 +73,8 @@
     flex: 1 1 auto;
     align-self: stretch;
     width: auto;
-    min-height: var(--cs-min-height, 640px);
-    padding: 5.6rem 3.2rem;
+    min-height: var(--cs-min-height, 0px);
+    padding: 3.2rem 3.2rem;
     /* Stretch over the padding of the group this block sits in, so the green reaches every edge. */
     margin-block: calc(-1 * var(--padding-block-start, 0px)) calc(-1 * var(--padding-block-end, 0px));
     margin-inline: calc(-1 * var(--padding-inline-start, 0px)) calc(-1 * var(--padding-inline-end, 0px));
@@ -95,7 +95,7 @@
   @media screen and (max-width: 749px) {
     .cs-show {
       min-height: 0;
-      padding: 4rem 2rem;
+      padding: 2.4rem 2rem;
     }
   }
 {% endstylesheet %}
@@ -115,11 +115,12 @@
       "type": "range",
       "id": "min_height",
       "label": "Minimum height",
-      "min": 400,
+      "info": "0 lets the panel fit its content. Raise it only if the panel needs to be taller.",
+      "min": 0,
       "max": 900,
       "step": 20,
       "unit": "px",
-      "default": 640
+      "default": 0
     }
   ],
   "blocks": [
