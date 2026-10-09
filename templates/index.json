@@ -2453,7 +2453,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Already on the tables of more than 100+ Cafes.</p>",
+                    "text": "<p><strong>Already on the tables of more than 100+ Cafes.</strong></p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -2480,7 +2480,7 @@
                   "name": "t:names.group",
                   "settings": {
                     "content_direction": "row",
-                    "vertical_on_mobile": false,
+                    "vertical_on_mobile": true,
                     "horizontal_alignment": "center",
                     "vertical_alignment": "center",
                     "align_baseline": false,
@@ -2676,7 +2676,7 @@
         "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "center",
         "gap": 12,
-        "section_width": "page-width",
+        "section_width": "full-width",
         "section_height": "small",
         "section_height_custom": 50,
         "background_media": "none",
