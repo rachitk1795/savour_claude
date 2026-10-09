@@ -70,9 +70,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    flex: 1 1 auto;
+    align-self: stretch;
+    width: auto;
     min-height: var(--cs-min-height, 640px);
     padding: 5.6rem 3.2rem;
+    /* Stretch over the padding of the group this block sits in, so the green reaches every edge. */
+    margin-block: calc(-1 * var(--padding-block-start, 0px)) calc(-1 * var(--padding-block-end, 0px));
+    margin-inline: calc(-1 * var(--padding-inline-start, 0px)) calc(-1 * var(--padding-inline-end, 0px));
     background-color: var(--cs-bg, #1D3932);
     color: #FBF8F1;
   }
