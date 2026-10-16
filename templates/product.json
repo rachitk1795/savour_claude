@@ -277,11 +277,11 @@
                     "text_size": 14,
                     "text_transform": "none",
                     "letter_spacing": 0,
-                    "background_color": "#D4E8E2",
-                    "text_color": "#1D3932",
-                    "icon_color": "#03754B",
+                    "background_color": "#d4e8e2",
+                    "text_color": "#1d3932",
+                    "icon_color": "#03754b",
                     "border_thickness": 0,
-                    "border_color": "#1D3932"
+                    "border_color": "#1d3932"
                   },
                   "blocks": {}
                 },
@@ -297,11 +297,11 @@
                     "text_size": 14,
                     "text_transform": "none",
                     "letter_spacing": 0,
-                    "background_color": "#D4E8E2",
-                    "text_color": "#1D3932",
-                    "icon_color": "#03754B",
+                    "background_color": "#d4e8e2",
+                    "text_color": "#1d3932",
+                    "icon_color": "#03754b",
                     "border_thickness": 0,
-                    "border_color": "#1D3932"
+                    "border_color": "#1d3932"
                   },
                   "blocks": {}
                 }
@@ -974,7 +974,7 @@
             "label": "Get Business Pricing",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
-            "style_class": "button",
+            "style_class": "button-secondary",
             "custom_button_background": "{{ settings.color_palette.foreground }}",
             "custom_button_text": "{{ settings.color_palette.background }}",
             "custom_button_border": "{{ settings.color_palette.background }}",

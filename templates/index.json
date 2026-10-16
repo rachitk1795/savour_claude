@@ -2431,7 +2431,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<h5><strong>Your logo, your colour, your straw.</strong> Compostable and made to order.</h5>",
+                    "text": "<h5><strong>Your logo, your colour, your straw.</strong>&nbsp;</h5><h5>Compostable and made to order.</h5>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -2461,7 +2461,7 @@
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
-                    "type_preset": "h6",
+                    "type_preset": "h5",
                     "font": "var(--font-body--family)",
                     "font_size": "1rem",
                     "line_height": "normal",
