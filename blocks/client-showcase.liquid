@@ -5,10 +5,27 @@
   (needs blocks/_client-showcase-item.liquid).
 {%- enddoc -%}
 
+{%- liquid
+  assign pill_font = block.settings.pill_font
+-%}
+
+<style>
+  {{ pill_font | font_face: font_display: 'swap' }}
+</style>
+
 <div
   class="cs-show"
   data-cs-show="{{ block.id }}"
-  style="--cs-bg: {{ block.settings.background_color }}; --cs-min-height: {{ block.settings.min_height }}px;"
+  style="
+    --cs-bg: {{ block.settings.background_color }};
+    --cs-min-height: {{ block.settings.min_height }}px;
+    --cs-pill-family: {{ pill_font.family }}, {{ pill_font.fallback_families }};
+    --cs-pill-weight: {{ pill_font.weight }};
+    --cs-pill-style: {{ pill_font.style }};
+    --cs-pill-size: {{ block.settings.pill_size }}px;
+    --cs-pill-spacing: {{ block.settings.pill_letter_spacing }}px;
+    --cs-pill-case: {{ block.settings.pill_case }};
+  "
   {{ block.shopify_attributes }}
 >
   <div class="cs-show__items">
@@ -121,6 +138,44 @@
       "step": 20,
       "unit": "px",
       "default": 0
+    },
+    { "type": "header", "content": "Client name buttons" },
+    {
+      "type": "font_picker",
+      "id": "pill_font",
+      "label": "Font",
+      "default": "montserrat_n5"
+    },
+    {
+      "type": "range",
+      "id": "pill_size",
+      "label": "Text size",
+      "min": 11,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "pill_letter_spacing",
+      "label": "Letter spacing",
+      "min": 0,
+      "max": 3,
+      "step": 0.1,
+      "unit": "px",
+      "default": 0.4
+    },
+    {
+      "type": "select",
+      "id": "pill_case",
+      "label": "Text case",
+      "options": [
+        { "value": "none", "label": "As typed" },
+        { "value": "uppercase", "label": "Uppercase" },
+        { "value": "capitalize", "label": "Capitalise" }
+      ],
+      "default": "none"
     }
   ],
   "blocks": [

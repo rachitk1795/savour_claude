@@ -116,18 +116,27 @@
   .cs-pill {
     appearance: none;
     cursor: pointer;
-    padding: 1rem 1.8rem;
-    border: 1px solid #FBF8F1;
+    padding: 1.1rem 2rem;
+    border: 1px solid rgba(251, 248, 241, 0.6);
     border-radius: 100px;
     background: transparent;
     color: #FBF8F1;
-    font-family: var(--font-accent--family), 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 1.3rem;
+    font-family: var(--cs-pill-family, 'Montserrat', sans-serif);
+    font-weight: var(--cs-pill-weight, 500);
+    font-style: var(--cs-pill-style, normal);
+    font-size: var(--cs-pill-size, 13px);
+    letter-spacing: var(--cs-pill-spacing, 0.4px);
+    text-transform: var(--cs-pill-case, none);
     line-height: 1.2;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
-  .cs-pill[aria-pressed='true'] {
+  .cs-pill:hover {
+    background: rgba(251, 248, 241, 0.14);
+  }
+
+  .cs-pill[aria-pressed='true'],
+  .cs-pill[aria-pressed='true']:hover {
     background: #FBF8F1;
     color: #1D3932;
   }
