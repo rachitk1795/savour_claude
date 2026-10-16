@@ -1,0 +1,389 @@
+{%- doc -%}
+  Price card for product pages.
+  Shows the per-piece price, the total for the selected pack, the saving
+  against the compare-at price, and up to three small trust chips.
+
+  Works for any pack size. The pack size is read from the selected variant:
+    1. a variant metafield called custom.pack_size (optional, wins if present), or
+    2. the first number in the variant option named in "Option name"
+       (for example "Pack of 500", "3,000 pcs", "Box of 10000").
+  Updates by itself when a different pack size is picked.
+{%- enddoc -%}
+
+{%- liquid
+  assign s = block.settings
+  assign product_resource = closest.product
+  assign v = product_resource.selected_or_first_available_variant
+  assign pack = 0
+
+  if v != blank
+    # 1. Optional metafield override
+    assign mf = v.metafields.custom.pack_size.value
+    if mf != blank
+      assign pack = mf | plus: 0
+    endif
+
+    # 2. Read the number from the chosen option
+    if pack < 1
+      assign want = s.option_name | strip | downcase
+      assign opt_index = -1
+      for opt in product_resource.options_with_values
+        assign opt_name = opt.name | downcase
+        if opt_name == want
+          assign opt_index = forloop.index0
+        endif
+      endfor
+      if opt_index < 0
+        assign opt_index = product_resource.options.size | minus: 1
+      endif
+
+      assign raw = v.options[opt_index] | downcase | remove: ','
+      assign raw = raw | replace: 'pcs', ' ' | replace: 'pc', ' ' | replace: 'x', ' ' | replace: '-', ' '
+      assign words = raw | split: ' '
+      for w in words
+        assign n = w | plus: 0
+        if n > 0
+          assign pack = n
+          break
+        endif
+      endfor
+    endif
+  endif
+
+  # Per-piece price. Shopify prices are in paise, so paise / pieces = hundredths of a rupee.
+  # With 3 decimals we scale by 10 first.
+  assign has_pack = false
+  if pack >= 1
+    assign has_pack = true
+  endif
+
+  assign decimals = s.decimals | plus: 0
+  if decimals != 3
+    assign decimals = 2
+  endif
+
+  if decimals == 3
+    assign scale = 1000
+    assign factor = 10
+  else
+    assign scale = 100
+    assign factor = 1
+  endif
+
+  assign unit_whole = ''
+  assign unit_frac = ''
+  if has_pack
+    assign scaled = v.price | times: factor | times: 1.0 | divided_by: pack | round
+    assign unit_whole = scaled | divided_by: scale
+    assign unit_rem = scaled | modulo: scale
+    assign pad = '000' | slice: 0, decimals
+    assign neg = decimals | times: -1
+    assign unit_frac = unit_rem | prepend: pad | slice: neg, decimals
+  endif
+
+  # Pack size written the Indian way: 500, 3,000, 10,000, 1,00,000
+  assign pack_text = ''
+  if has_pack
+    assign digits = pack | round | append: ''
+    assign len = digits.size
+    if len <= 3
+      assign pack_text = digits
+    else
+      assign cut = len | minus: 3
+      assign pack_text = digits | slice: -3, 3
+      assign rest = digits | slice: 0, cut
+      for i in (1..8)
+        assign rest_len = rest.size
+        if rest_len == 0
+          break
+        endif
+        if rest_len > 2
+          assign piece = rest | slice: -2, 2
+          assign rest_cut = rest_len | minus: 2
+          assign rest = rest | slice: 0, rest_cut
+        else
+          assign piece = rest
+          assign rest = ''
+        endif
+        assign pack_text = piece | append: ',' | append: pack_text
+      endfor
+    endif
+  endif
+
+  assign has_saving = false
+  if v != blank and v.compare_at_price > v.price
+    assign has_saving = true
+    assign saving = v.compare_at_price | minus: v.price
+  endif
+
+  assign currency_symbol = cart.currency.symbol
+-%}
+
+{%- if v != blank -%}
+  <price-card
+    class="price-card"
+    data-block-id="{{ block.id }}"
+    data-product-id="{{ product_resource.id }}"
+    style="
+      --pc-bg: {{ s.background_color }};
+      --pc-accent: {{ s.accent_color }};
+      --pc-badge-bg: {{ s.badge_color }};
+      --pc-badge-text: {{ s.badge_text_color }};
+    "
+    {{ block.shopify_attributes }}
+  >
+    <div class="price-card__body" ref="body">
+      {%- if has_pack -%}
+        <div class="price-card__row">
+          <span class="price-card__unit-price">
+            <span class="price-card__symbol">{{ currency_symbol }}</span>{{ unit_whole }}.{{ unit_frac }}
+          </span>
+          {%- if s.unit_label != blank -%}
+            <span class="price-card__unit-label">/ {{ s.unit_label | escape }}</span>
+          {%- endif -%}
+          {%- if has_saving and s.show_saving -%}
+            <span class="price-card__badge">{{ s.save_label | escape }} {{ saving | money }}</span>
+          {%- endif -%}
+        </div>
+
+        <div class="price-card__total">
+          <span>
+            {{ s.total_label | escape }}
+            <strong>{{ v.price | money }}</strong>
+            {{ s.pack_label | escape }} {{ pack_text }}
+          </span>
+          {%- if has_saving -%}
+            <s class="price-card__mrp">{{ v.compare_at_price | money }}</s>
+          {%- endif -%}
+        </div>
+      {%- else -%}
+        {%- comment -%} Pack size not found: fall back to a plain price. {%- endcomment -%}
+        <div class="price-card__row">
+          <span class="price-card__unit-price">{{ v.price | money }}</span>
+          {%- if has_saving -%}
+            <s class="price-card__mrp">{{ v.compare_at_price | money }}</s>
+            {%- if s.show_saving -%}
+              <span class="price-card__badge">{{ s.save_label | escape }} {{ saving | money }}</span>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if s.chip_1 != blank or s.chip_2 != blank or s.chip_3 != blank -%}
+      <ul class="price-card__chips">
+        {%- if s.chip_1 != blank -%}<li>{{ s.chip_1 | escape }}</li>{%- endif -%}
+        {%- if s.chip_2 != blank -%}<li>{{ s.chip_2 | escape }}</li>{%- endif -%}
+        {%- if s.chip_3 != blank -%}<li>{{ s.chip_3 | escape }}</li>{%- endif -%}
+      </ul>
+    {%- endif -%}
+  </price-card>
+
+  <script type="module">
+    import { StandardEvents } from '@shopify/events';
+
+    if (!customElements.get('price-card')) {
+      class PriceCard extends HTMLElement {
+        #section = null;
+
+        connectedCallback() {
+          this.#section = this.closest('.shopify-section, dialog');
+          this.#section?.addEventListener(StandardEvents.productSelect, this.#onSelect);
+        }
+
+        disconnectedCallback() {
+          this.#section?.removeEventListener(StandardEvents.productSelect, this.#onSelect);
+        }
+
+        #onSelect = (event) => {
+          if (!(event.target instanceof Element) || event.target.closest('product-card')) return;
+
+          event.promise
+            .then(({ detail }) => {
+              if (!detail || !detail.html) return;
+              const { html, newProduct } = detail;
+
+              if (newProduct) {
+                this.dataset.productId = newProduct.id;
+              } else if (detail.productId && String(detail.productId) !== String(this.dataset.productId)) {
+                return;
+              }
+
+              const next = html.querySelector(`price-card[data-block-id="${this.dataset.blockId}"]`);
+              if (!next) return;
+
+              const body = this.querySelector('.price-card__body');
+              const nextBody = next.querySelector('.price-card__body');
+              if (body && nextBody) body.replaceWith(nextBody);
+            })
+            .catch(() => {});
+        };
+      }
+
+      customElements.define('price-card', PriceCard);
+    }
+  </script>
+{%- endif -%}
+
+{% stylesheet %}
+  .price-card {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+    padding: 2rem 2.4rem 2rem 2.8rem;
+    border: 1px solid rgba(29, 57, 50, 0.12);
+    border-radius: 1.6rem;
+    background-color: var(--pc-bg, #ffffff);
+    color: var(--color-foreground, #1d3932);
+  }
+
+  .price-card::before {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    width: 0.6rem;
+    background-color: var(--pc-accent, #03754b);
+  }
+
+  .price-card__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 1.2rem;
+  }
+
+  .price-card__unit-price {
+    font-family: var(--font-heading--family), 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 4.2rem;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .price-card__symbol {
+    margin-inline-end: 0.2rem;
+    font-size: 0.6em;
+    font-weight: 500;
+  }
+
+  .price-card__unit-label {
+    font-family: var(--font-body--family), 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    opacity: 0.7;
+  }
+
+  .price-card__badge {
+    padding: 0.7rem 1.4rem;
+    border-radius: 100px;
+    background-color: var(--pc-badge-bg, #c99a2e);
+    color: var(--pc-badge-text, #1d3932);
+    font-family: var(--font-accent--family), 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: 1.2;
+  }
+
+  .price-card__total {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem 1.2rem;
+    margin-top: 1.2rem;
+    font-family: var(--font-body--family), 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+  }
+
+  .price-card__total strong {
+    font-weight: 600;
+  }
+
+  .price-card__mrp {
+    font-size: 1.3rem;
+    opacity: 0.55;
+  }
+
+  .price-card__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .price-card__chips li {
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(29, 57, 50, 0.14);
+    border-radius: 100px;
+    background-color: rgba(3, 117, 75, 0.07);
+    font-family: var(--font-body--family), 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+
+  @media screen and (max-width: 749px) {
+    .price-card {
+      padding: 1.6rem 1.6rem 1.6rem 2rem;
+    }
+
+    .price-card__unit-price {
+      font-size: 3.4rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Price card",
+  "tag": null,
+  "settings": [
+    { "type": "header", "content": "Pack size" },
+    {
+      "type": "text",
+      "id": "option_name",
+      "label": "Option name",
+      "info": "The product option that holds the pack size, for example Quantity or Pack. The first number in its value is used, so \"Pack of 500\" or \"3,000 pcs\" both work.",
+      "default": "Quantity"
+    },
+    {
+      "type": "text",
+      "id": "unit_label",
+      "label": "Unit",
+      "info": "Shown after the per-piece price, for example pc.",
+      "default": "pc"
+    },
+    {
+      "type": "select",
+      "id": "decimals",
+      "label": "Per-piece price decimals",
+      "info": "Use 3 for very low prices, so 0.614 does not round to 0.61.",
+      "options": [
+        { "value": "2", "label": "2 (₹9.14)" },
+        { "value": "3", "label": "3 (₹0.614)" }
+      ],
+      "default": "2"
+    },
+    { "type": "header", "content": "Wording" },
+    { "type": "text", "id": "total_label", "label": "Total label", "default": "Total:" },
+    { "type": "text", "id": "pack_label", "label": "Pack label", "default": "for pack of" },
+    { "type": "checkbox", "id": "show_saving", "label": "Show saving badge", "default": true },
+    { "type": "text", "id": "save_label", "label": "Saving badge text", "default": "Save" },
+    { "type": "header", "content": "Chips (leave empty to hide)" },
+    { "type": "text", "id": "chip_1", "label": "Chip 1", "default": "GST included" },
+    { "type": "text", "id": "chip_2", "label": "Chip 2" },
+    { "type": "text", "id": "chip_3", "label": "Chip 3" },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "background_color", "label": "Card background", "default": "#FFFFFF" },
+    { "type": "color", "id": "accent_color", "label": "Left edge", "default": "#03754B" },
+    { "type": "color", "id": "badge_color", "label": "Saving badge", "default": "#C99A2E" },
+    { "type": "color", "id": "badge_text_color", "label": "Saving badge text", "default": "#1D3932" }
+  ],
+  "presets": [
+    { "name": "Price card" }
+  ]
+}
+{% endschema %}
