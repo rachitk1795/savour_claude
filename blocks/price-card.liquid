@@ -127,8 +127,8 @@
     style="
       --pc-bg: {{ s.background_color }};
       --pc-accent: {{ s.accent_color }};
-      --pc-badge-bg: {{ s.badge_color }};
-      --pc-badge-text: {{ s.badge_text_color }};
+      --pc-badge-bg: {{ s.badge_bg }};
+      --pc-badge-text: {{ s.badge_fg }};
     "
     {{ block.shopify_attributes }}
   >
@@ -232,10 +232,11 @@
     box-sizing: border-box;
     width: 100%;
     overflow: hidden;
-    padding: 2rem 2.4rem 2rem 2.8rem;
-    border: 1px solid rgba(29, 57, 50, 0.12);
-    border-radius: 1.6rem;
+    padding: 1.25rem 1.5rem 1.25rem 1.75rem;
+    border: 1px solid rgba(29, 57, 50, 0.1);
+    border-radius: 0.875rem;
     background-color: var(--pc-bg, #ffffff);
+    box-shadow: 0 1px 2px rgba(29, 57, 50, 0.04), 0 10px 28px rgba(29, 57, 50, 0.06);
     color: var(--color-foreground, #1d3932);
   }
 
@@ -244,7 +245,7 @@
     position: absolute;
     inset-block: 0;
     inset-inline-start: 0;
-    width: 0.6rem;
+    width: 0.25rem;
     background-color: var(--pc-accent, #03754b);
   }
 
@@ -252,37 +253,37 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.6rem 1.2rem;
+    gap: 0.5rem 0.875rem;
   }
 
   .price-card__unit-price {
     font-family: var(--font-heading--family), 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 4.2rem;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
+    font-size: 2.125rem;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
   }
 
   .price-card__symbol {
-    margin-inline-end: 0.2rem;
-    font-size: 0.6em;
+    margin-inline-end: 0.1em;
+    font-size: 0.65em;
     font-weight: 500;
   }
 
   .price-card__unit-label {
     font-family: var(--font-body--family), 'Montserrat', sans-serif;
-    font-size: 1.6rem;
-    opacity: 0.7;
+    font-size: 0.9375rem;
+    opacity: 0.65;
   }
 
   .price-card__badge {
-    padding: 0.7rem 1.4rem;
+    padding: 0.3125rem 0.75rem;
     border-radius: 100px;
-    background-color: var(--pc-badge-bg, #c99a2e);
-    color: var(--pc-badge-text, #1d3932);
+    background-color: var(--pc-badge-bg, #f4e7c3);
+    color: var(--pc-badge-text, #7a5a12);
     font-family: var(--font-accent--family), 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 1.3rem;
+    font-size: 0.8125rem;
     line-height: 1.2;
   }
 
@@ -290,10 +291,11 @@
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
-    gap: 0.4rem 1.2rem;
-    margin-top: 1.2rem;
+    gap: 0.25rem 0.75rem;
+    margin-top: 0.625rem;
     font-family: var(--font-body--family), 'Montserrat', sans-serif;
-    font-size: 1.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.4;
   }
 
   .price-card__total strong {
@@ -301,37 +303,54 @@
   }
 
   .price-card__mrp {
-    font-size: 1.3rem;
-    opacity: 0.55;
+    font-size: 0.8125rem;
+    opacity: 0.5;
   }
 
   .price-card__chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.8rem;
-    margin: 1.6rem 0 0;
-    padding: 0;
+    gap: 0.5rem;
+    margin: 1rem 0 0;
+    padding: 1rem 0 0;
+    border-top: 1px solid rgba(29, 57, 50, 0.08);
     list-style: none;
   }
 
   .price-card__chips li {
-    padding: 0.6rem 1.2rem;
-    border: 1px solid rgba(29, 57, 50, 0.14);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
     border-radius: 100px;
     background-color: rgba(3, 117, 75, 0.07);
     font-family: var(--font-body--family), 'Montserrat', sans-serif;
     font-weight: 500;
-    font-size: 1.2rem;
-    line-height: 1.2;
+    font-size: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .price-card__chips li::before {
+    content: '';
+    flex: none;
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: var(--pc-accent, #03754b);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.8' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3.2L13 4.8' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
   }
 
   @media screen and (max-width: 749px) {
     .price-card {
-      padding: 1.6rem 1.6rem 1.6rem 2rem;
+      padding: 1rem 1.125rem 1rem 1.375rem;
     }
 
     .price-card__unit-price {
-      font-size: 3.4rem;
+      font-size: 1.75rem;
+    }
+
+    .price-card__total {
+      font-size: 0.875rem;
     }
   }
 {% endstylesheet %}
@@ -379,8 +398,8 @@
     { "type": "header", "content": "Colours" },
     { "type": "color", "id": "background_color", "label": "Card background", "default": "#FFFFFF" },
     { "type": "color", "id": "accent_color", "label": "Left edge", "default": "#03754B" },
-    { "type": "color", "id": "badge_color", "label": "Saving badge", "default": "#C99A2E" },
-    { "type": "color", "id": "badge_text_color", "label": "Saving badge text", "default": "#1D3932" }
+    { "type": "color", "id": "badge_bg", "label": "Saving badge", "default": "#F4E7C3" },
+    { "type": "color", "id": "badge_fg", "label": "Saving badge text", "default": "#7A5A12" }
   ],
   "presets": [
     { "name": "Price card" }
