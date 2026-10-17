@@ -327,8 +327,8 @@
                 "chip_3": "Factory direct",
                 "background_color": "{{ settings.color_palette.background }}",
                 "accent_color": "#03754b",
-                "badge_color": "#c99a2e",
-                "badge_text_color": "#1d3932"
+                "badge_bg": "#f4e7c3",
+                "badge_fg": "#7a5a12"
               },
               "blocks": {}
             },
@@ -585,6 +585,25 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "delivery_checker_cXfdeL": {
+              "type": "delivery-checker",
+              "name": "Delivery checker",
+              "settings": {
+                "heading": "Check delivery to your PIN code",
+                "subheading": "See when your order can reach you.",
+                "placeholder": "6-digit PIN code",
+                "button_label": "Check",
+                "ship_note": "Ships from Indore within 24–48 hours.",
+                "show_free": false,
+                "free_text": "Free delivery",
+                "cutoff_hour": 14,
+                "work_sundays": false,
+                "rules": "452: 1-2\n45-48: 2-3\n36-44, 30-34, 49: 3-4\n11-17, 20-28: 3-5\n50-53, 56-64, 67-69: 4-6\n70-77, 80-85: 4-6\n18-19, 78-79: 6-9\n744, 682: 7-10",
+                "default_min": 4,
+                "default_max": 7
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -599,7 +618,8 @@
             "buy_buttons_eYQEYi",
             "divider_3awnnA",
             "group_BjRJDe",
-            "text_kDKCdE"
+            "text_kDKCdE",
+            "delivery_checker_cXfdeL"
           ]
         }
       },
