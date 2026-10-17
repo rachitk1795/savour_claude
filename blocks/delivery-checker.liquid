@@ -1,0 +1,471 @@
+{%- doc -%}
+  PIN code delivery checker for product pages.
+  The customer types a 6-digit PIN code and sees an estimated delivery date range.
+
+  How the estimate works (all editable in the theme editor):
+    - Orders placed before the cut-off hour (IST) are dispatched the same day,
+      later orders the next working day. Sundays can be skipped.
+    - Transit days come from the "Delivery rules" list. Each rule is one or more PIN prefixes
+      (or ranges like 36-39) and a range of days, for example "452: 1-2". The longest matching prefix wins,
+      anything that matches no rule uses the default range.
+  No courier account is needed. It is an estimate, not a live courier lookup.
+{%- enddoc -%}
+
+{%- liquid
+  assign s = block.settings
+-%}
+
+<delivery-checker
+  class="delivery-checker"
+  data-cutoff="{{ s.cutoff_hour }}"
+  data-sundays="{{ s.work_sundays }}"
+  data-default-min="{{ s.default_min }}"
+  data-default-max="{{ s.default_max }}"
+  data-rules="{{ s.rules | escape }}"
+  data-ship-note="{{ s.ship_note | escape }}"
+  data-free-text="{%- if s.show_free -%}{{ s.free_text | escape }}{%- endif -%}"
+  {{ block.shopify_attributes }}
+>
+  <div class="delivery-checker__head">
+    <svg class="delivery-checker__icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+      <path
+        d="M3 6.5A1.5 1.5 0 0 1 4.5 5h8A1.5 1.5 0 0 1 14 6.5V8h3.2a1.5 1.5 0 0 1 1.2.6l2.3 3.1c.2.3.3.6.3.9V16a1.5 1.5 0 0 1-1.5 1.5H19m-5 0H9.5M7 17.5H4.5A1.5 1.5 0 0 1 3 16V6.5M14 8v9.5"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <circle cx="8" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.5" />
+      <circle cx="17" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.5" />
+    </svg>
+    <div>
+      {%- if s.heading != blank -%}
+        <p class="delivery-checker__title">{{ s.heading | escape }}</p>
+      {%- endif -%}
+      {%- if s.subheading != blank -%}
+        <p class="delivery-checker__sub">{{ s.subheading | escape }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <form class="delivery-checker__form" novalidate>
+    <label class="delivery-checker__label" for="delivery-pin-{{ block.id }}">PIN code</label>
+    <input
+      id="delivery-pin-{{ block.id }}"
+      class="delivery-checker__input"
+      type="text"
+      inputmode="numeric"
+      pattern="[0-9]*"
+      maxlength="6"
+      autocomplete="postal-code"
+      placeholder="{{ s.placeholder | escape }}"
+    >
+    <button type="submit" class="delivery-checker__button">{{ s.button_label | escape }}</button>
+  </form>
+
+  <div class="delivery-checker__result" role="status" aria-live="polite" hidden>
+    <p class="delivery-checker__result-title"></p>
+    <p class="delivery-checker__result-line delivery-checker__result-dates"></p>
+    <p class="delivery-checker__result-line delivery-checker__result-cutoff"></p>
+    <p class="delivery-checker__result-line delivery-checker__result-note"></p>
+  </div>
+</delivery-checker>
+
+<script>
+  (function () {
+    if (customElements.get('delivery-checker')) return;
+
+    var DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var STORAGE_KEY = 'organipaks-delivery-pin';
+
+    function istNow() {
+      var parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Asia/Kolkata',
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        hour12: false,
+      }).formatToParts(new Date());
+      function get(type) {
+        for (var i = 0; i < parts.length; i++) if (parts[i].type === type) return parseInt(parts[i].value, 10);
+        return 0;
+      }
+      return { y: get('year'), m: get('month'), d: get('day'), h: get('hour') % 24 };
+    }
+
+    function fmt(date) {
+      return DAYS[date.getUTCDay()] + ', ' + date.getUTCDate() + ' ' + MONTHS[date.getUTCMonth()];
+    }
+
+    class DeliveryChecker extends HTMLElement {
+      connectedCallback() {
+        this.form = this.querySelector('form');
+        this.input = this.querySelector('.delivery-checker__input');
+        this.result = this.querySelector('.delivery-checker__result');
+        if (!this.form || !this.input || !this.result) return;
+
+        this.cutoff = parseInt(this.dataset.cutoff, 10) || 14;
+        this.sundays = this.dataset.sundays === 'true';
+        this.defaultMin = parseInt(this.dataset.defaultMin, 10) || 3;
+        this.defaultMax = parseInt(this.dataset.defaultMax, 10) || 6;
+        this.rules = this.parseRules(this.dataset.rules || '');
+
+        this.input.addEventListener('input', function () {
+          this.input.value = this.input.value.replace(/\D/g, '').slice(0, 6);
+        }.bind(this));
+
+        this.form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          this.check(this.input.value);
+        }.bind(this));
+
+        try {
+          var saved = window.localStorage.getItem(STORAGE_KEY);
+          if (saved && /^[1-9][0-9]{5}$/.test(saved)) {
+            this.input.value = saved;
+            this.check(saved, true);
+          }
+        } catch (e) {}
+      }
+
+      parseRules(text) {
+        var rules = [];
+        text.split(/[\n;]/).forEach(function (line) {
+          var match = line.match(/^\s*([\d,\s\-\u2013]+?)\s*[:=]\s*(\d+)\s*(?:-|to|\u2013)?\s*(\d+)?/i);
+          if (!match) return;
+          var min = parseInt(match[2], 10);
+          var max = match[3] ? parseInt(match[3], 10) : min;
+          var lo = Math.min(min, max);
+          var hi = Math.max(min, max);
+          match[1].split(',').forEach(function (token) {
+            token = token.trim();
+            var range = token.match(/^(\d+)\s*[-\u2013]\s*(\d+)$/);
+            if (range) {
+              var a = parseInt(range[1], 10);
+              var b = parseInt(range[2], 10);
+              var width = range[1].length;
+              for (var n = Math.min(a, b); n <= Math.max(a, b) && n - Math.min(a, b) < 1000; n++) {
+                var prefix = String(n);
+                while (prefix.length < width) prefix = '0' + prefix;
+                if (prefix.length <= 6) rules.push({ prefix: prefix, min: lo, max: hi });
+              }
+            } else if (/^\d{1,6}$/.test(token)) {
+              rules.push({ prefix: token, min: lo, max: hi });
+            }
+          });
+        });
+        rules.sort(function (a, b) { return b.prefix.length - a.prefix.length; });
+        return rules;
+      }
+
+      isOff(date) {
+        return !this.sundays && date.getUTCDay() === 0;
+      }
+
+      addWorkingDays(start, count) {
+        var date = new Date(start.getTime());
+        for (var i = 0; i < count; i++) {
+          do {
+            date.setUTCDate(date.getUTCDate() + 1);
+          } while (this.isOff(date));
+        }
+        return date;
+      }
+
+      show(state, title, dates, cutoff, note) {
+        this.result.hidden = false;
+        this.result.setAttribute('data-state', state);
+        this.result.querySelector('.delivery-checker__result-title').textContent = title;
+        var set = function (selector, text) {
+          var el = this.result.querySelector(selector);
+          el.textContent = text || '';
+          el.hidden = !text;
+        }.bind(this);
+        set('.delivery-checker__result-dates', dates);
+        set('.delivery-checker__result-cutoff', cutoff);
+        set('.delivery-checker__result-note', note);
+      }
+
+      check(pin, quiet) {
+        if (!/^[1-9][0-9]{5}$/.test(pin)) {
+          this.show('error', 'Enter a valid 6-digit PIN code.', '', '', '');
+          return;
+        }
+
+        var min = this.defaultMin;
+        var max = this.defaultMax;
+        for (var i = 0; i < this.rules.length; i++) {
+          if (pin.indexOf(this.rules[i].prefix) === 0) {
+            min = this.rules[i].min;
+            max = this.rules[i].max;
+            break;
+          }
+        }
+
+        var now = istNow();
+        var today = new Date(Date.UTC(now.y, now.m - 1, now.d));
+        var dispatch = new Date(today.getTime());
+        var sameDay = now.h < this.cutoff && !this.isOff(today);
+        if (!sameDay) {
+          do {
+            dispatch.setUTCDate(dispatch.getUTCDate() + 1);
+          } while (this.isOff(dispatch));
+        }
+
+        var from = this.addWorkingDays(dispatch, min);
+        var to = this.addWorkingDays(dispatch, max);
+        var range = from.getTime() === to.getTime() ? fmt(from) : fmt(from) + ' to ' + fmt(to);
+
+        var title = from.getTime() === to.getTime() ? 'Arrives by ' + fmt(from) : 'Arrives ' + range;
+        var free = this.dataset.freeText;
+        var cutoffHour = this.cutoff > 12 ? this.cutoff - 12 : this.cutoff;
+        var suffix = this.cutoff >= 12 ? 'pm' : 'am';
+        var cutoffLine = sameDay
+          ? 'Order before ' + cutoffHour + ' ' + suffix + ' IST for same-day dispatch.'
+          : 'Orders placed now are dispatched on ' + fmt(dispatch) + '.';
+
+        this.show('ok', title, free || '', cutoffLine, this.dataset.shipNote || '');
+
+        if (!quiet) {
+          try {
+            window.localStorage.setItem(STORAGE_KEY, pin);
+          } catch (e) {}
+        }
+      }
+    }
+
+    customElements.define('delivery-checker', DeliveryChecker);
+  })();
+</script>
+
+{% stylesheet %}
+  .delivery-checker {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(29, 57, 50, 0.1);
+    border-radius: 0.875rem;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px rgba(29, 57, 50, 0.04);
+    color: var(--color-foreground, #1d3932);
+    font-family: var(--font-body--family), 'Montserrat', sans-serif;
+  }
+
+  .delivery-checker__head {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .delivery-checker__icon {
+    flex: none;
+    margin-top: 0.1rem;
+    color: #03754b;
+  }
+
+  .delivery-checker__title {
+    margin: 0;
+    font-family: var(--font-heading--family), 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .delivery-checker__sub {
+    margin: 0.2rem 0 0;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    opacity: 0.65;
+  }
+
+  .delivery-checker__form {
+    display: flex;
+    gap: 0.625rem;
+    margin-top: 1rem;
+  }
+
+  .delivery-checker__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .delivery-checker__input {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 2.75rem;
+    box-sizing: border-box;
+    padding: 0 1rem;
+    border: 1px solid rgba(29, 57, 50, 0.2);
+    border-radius: 0.5rem;
+    background: #ffffff;
+    color: inherit;
+    font: inherit;
+    font-size: 0.9375rem;
+    letter-spacing: 0.08em;
+  }
+
+  .delivery-checker__input::placeholder {
+    letter-spacing: 0;
+    opacity: 0.45;
+  }
+
+  .delivery-checker__input:focus-visible {
+    outline: 2px solid #03754b;
+    outline-offset: 1px;
+  }
+
+  .delivery-checker__button {
+    flex: none;
+    height: 2.75rem;
+    padding: 0 1.5rem;
+    border: 0;
+    border-radius: 100px;
+    background-color: #1d3932;
+    color: #fbf8f1;
+    font-family: var(--font-accent--family), 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+
+  .delivery-checker__button:hover {
+    opacity: 0.9;
+  }
+
+  .delivery-checker__button:focus-visible {
+    outline: 2px solid #03754b;
+    outline-offset: 2px;
+  }
+
+  .delivery-checker__result {
+    margin-top: 1rem;
+    padding: 0.875rem 1rem;
+    border-radius: 0.625rem;
+    background-color: rgba(3, 117, 75, 0.07);
+  }
+
+  .delivery-checker__result[data-state='error'] {
+    background-color: rgba(201, 154, 46, 0.14);
+  }
+
+  .delivery-checker__result[hidden],
+  .delivery-checker__result-line[hidden] {
+    display: none;
+  }
+
+  .delivery-checker__result-title {
+    margin: 0;
+    font-family: var(--font-heading--family), 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+  }
+
+  .delivery-checker__result-line {
+    margin: 0.35rem 0 0;
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    opacity: 0.75;
+  }
+
+  .delivery-checker__result-dates {
+    font-weight: 600;
+    color: #03754b;
+    opacity: 1;
+  }
+
+  @media screen and (max-width: 749px) {
+    .delivery-checker {
+      padding: 1rem 1.125rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Delivery checker",
+  "tag": null,
+  "settings": [
+    { "type": "header", "content": "Text" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Check delivery to your PIN code" },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Short line under the heading",
+      "default": "See when your order can reach you."
+    },
+    { "type": "text", "id": "placeholder", "label": "Input placeholder", "default": "6-digit PIN code" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Check" },
+    {
+      "type": "text",
+      "id": "ship_note",
+      "label": "Dispatch note",
+      "info": "Shown under the estimate. Leave empty to hide.",
+      "default": "Ships from Indore within 24–48 hours."
+    },
+    { "type": "header", "content": "Dispatch" },
+    {
+      "type": "range",
+      "id": "cutoff_hour",
+      "label": "Same-day dispatch cut-off (IST)",
+      "info": "Orders before this hour (24-hour clock, India time) are dispatched the same day. 14 is 2 pm.",
+      "min": 9,
+      "max": 20,
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "checkbox",
+      "id": "work_sundays",
+      "label": "Dispatch and deliver on Sundays",
+      "default": false
+    },
+    { "type": "header", "content": "Delivery days" },
+    {
+      "type": "textarea",
+      "id": "rules",
+      "label": "Delivery rules",
+      "info": "One per line: PIN prefixes, a colon, then working days after dispatch, for example 452: 1-2. A line can hold several prefixes or ranges, for example 36-39, 49: 3-4. The longest matching prefix wins. These are starting values, replace them with your real courier timings.",
+      "default": "452: 1-2\n45: 2-3\n4: 3-5"
+    },
+    {
+      "type": "range",
+      "id": "default_min",
+      "label": "Other PIN codes: fastest (working days)",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "default_max",
+      "label": "Other PIN codes: slowest (working days)",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "default": 7
+    },
+    { "type": "header", "content": "Free delivery line" },
+    {
+      "type": "checkbox",
+      "id": "show_free",
+      "label": "Show a free-delivery line under the dates",
+      "info": "Only turn this on if it is true for every order.",
+      "default": false
+    },
+    { "type": "text", "id": "free_text", "label": "Free-delivery text", "default": "Free delivery" }
+  ],
+  "presets": [
+    { "name": "Delivery checker" }
+  ]
+}
+{% endschema %}
