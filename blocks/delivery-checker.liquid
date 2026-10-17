@@ -24,6 +24,28 @@
   data-rules="{{ s.rules | escape }}"
   data-ship-note="{{ s.ship_note | escape }}"
   data-free-text="{%- if s.show_free -%}{{ s.free_text | escape }}{%- endif -%}"
+  data-t-arrives="{{ s.text_arrives | escape }}"
+  data-t-arrives-by="{{ s.text_arrives_by | escape }}"
+  data-t-to="{{ s.text_range_joiner | escape }}"
+  data-t-same-day="{{ s.text_same_day | escape }}"
+  data-t-next-day="{{ s.text_next_day | escape }}"
+  data-t-error="{{ s.text_error | escape }}"
+  style="
+    --dc-bg: {{ s.background_color }};
+    --dc-border: {{ s.border_color }};
+    --dc-text: {{ s.text_color }};
+    --dc-muted: {{ s.muted_color }};
+    --dc-icon: {{ s.icon_color }};
+    --dc-input-bg: {{ s.input_background }};
+    --dc-input-border: {{ s.input_border }};
+    --dc-input-text: {{ s.input_text }};
+    --dc-btn-bg: {{ s.button_background }};
+    --dc-btn-text: {{ s.button_text }};
+    --dc-result-bg: {{ s.result_background }};
+    --dc-result-text: {{ s.result_text }};
+    --dc-dates: {{ s.dates_color }};
+    --dc-error-bg: {{ s.error_background }};
+  "
   {{ block.shopify_attributes }}
 >
   <div class="delivery-checker__head">
@@ -50,7 +72,7 @@
   </div>
 
   <form class="delivery-checker__form" novalidate>
-    <label class="delivery-checker__label" for="delivery-pin-{{ block.id }}">PIN code</label>
+    <label class="delivery-checker__label" for="delivery-pin-{{ block.id }}">{{ s.input_label | escape }}</label>
     <input
       id="delivery-pin-{{ block.id }}"
       class="delivery-checker__input"
@@ -175,6 +197,11 @@
         return date;
       }
 
+      text(key, fallback) {
+        var value = this.dataset[key];
+        return value === undefined || value === '' ? fallback : value;
+      }
+
       show(state, title, dates, cutoff, note) {
         this.result.hidden = false;
         this.result.setAttribute('data-state', state);
@@ -191,7 +218,7 @@
 
       check(pin, quiet) {
         if (!/^[1-9][0-9]{5}$/.test(pin)) {
-          this.show('error', 'Enter a valid 6-digit PIN code.', '', '', '');
+          this.show('error', this.text('tError', 'Enter a valid 6-digit PIN code.'), '', '', '');
           return;
         }
 
@@ -217,15 +244,17 @@
 
         var from = this.addWorkingDays(dispatch, min);
         var to = this.addWorkingDays(dispatch, max);
-        var range = from.getTime() === to.getTime() ? fmt(from) : fmt(from) + ' to ' + fmt(to);
-
-        var title = from.getTime() === to.getTime() ? 'Arrives by ' + fmt(from) : 'Arrives ' + range;
+        var single = from.getTime() === to.getTime();
+        var title = single
+          ? this.text('tArrivesBy', 'Arrives by') + ' ' + fmt(from)
+          : this.text('tArrives', 'Arrives') + ' ' + fmt(from) + ' ' + this.text('tTo', 'to') + ' ' + fmt(to);
         var free = this.dataset.freeText;
         var cutoffHour = this.cutoff > 12 ? this.cutoff - 12 : this.cutoff;
         var suffix = this.cutoff >= 12 ? 'pm' : 'am';
-        var cutoffLine = sameDay
-          ? 'Order before ' + cutoffHour + ' ' + suffix + ' IST for same-day dispatch.'
-          : 'Orders placed now are dispatched on ' + fmt(dispatch) + '.';
+        var line = sameDay ? this.dataset.tSameDay : this.dataset.tNextDay;
+        var cutoffLine = (line || '')
+          .replace(/\{time\}/g, cutoffHour + ' ' + suffix)
+          .replace(/\{date\}/g, fmt(dispatch));
 
         this.show('ok', title, free || '', cutoffLine, this.dataset.shipNote || '');
 
@@ -247,11 +276,11 @@
     box-sizing: border-box;
     width: 100%;
     padding: 1.25rem 1.5rem;
-    border: 1px solid rgba(29, 57, 50, 0.1);
+    border: 1px solid var(--dc-border, rgba(29, 57, 50, 0.1));
     border-radius: 0.875rem;
-    background-color: #ffffff;
+    background-color: var(--dc-bg, #ffffff);
     box-shadow: 0 1px 2px rgba(29, 57, 50, 0.04);
-    color: var(--color-foreground, #1d3932);
+    color: var(--dc-text, #1d3932);
     font-family: var(--font-body--family), 'Montserrat', sans-serif;
   }
 
@@ -264,7 +293,7 @@
   .delivery-checker__icon {
     flex: none;
     margin-top: 0.1rem;
-    color: #03754b;
+    color: var(--dc-icon, #03754b);
   }
 
   .delivery-checker__title {
@@ -279,7 +308,7 @@
     margin: 0.2rem 0 0;
     font-size: 0.8125rem;
     line-height: 1.4;
-    opacity: 0.65;
+    color: var(--dc-muted, #5f736c);
   }
 
   .delivery-checker__form {
@@ -303,10 +332,10 @@
     height: 2.75rem;
     box-sizing: border-box;
     padding: 0 1rem;
-    border: 1px solid rgba(29, 57, 50, 0.2);
+    border: 1px solid var(--dc-input-border, rgba(29, 57, 50, 0.2));
     border-radius: 0.5rem;
-    background: #ffffff;
-    color: inherit;
+    background: var(--dc-input-bg, #ffffff);
+    color: var(--dc-input-text, #1d3932);
     font: inherit;
     font-size: 0.9375rem;
     letter-spacing: 0.08em;
@@ -314,11 +343,12 @@
 
   .delivery-checker__input::placeholder {
     letter-spacing: 0;
-    opacity: 0.45;
+    color: var(--dc-muted, #5f736c);
+    opacity: 0.7;
   }
 
   .delivery-checker__input:focus-visible {
-    outline: 2px solid #03754b;
+    outline: 2px solid var(--dc-icon, #03754b);
     outline-offset: 1px;
   }
 
@@ -328,8 +358,8 @@
     padding: 0 1.5rem;
     border: 0;
     border-radius: 100px;
-    background-color: #1d3932;
-    color: #fbf8f1;
+    background-color: var(--dc-btn-bg, #1d3932);
+    color: var(--dc-btn-text, #fbf8f1);
     font-family: var(--font-accent--family), 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 0.875rem;
@@ -341,7 +371,7 @@
   }
 
   .delivery-checker__button:focus-visible {
-    outline: 2px solid #03754b;
+    outline: 2px solid var(--dc-icon, #03754b);
     outline-offset: 2px;
   }
 
@@ -349,11 +379,12 @@
     margin-top: 1rem;
     padding: 0.875rem 1rem;
     border-radius: 0.625rem;
-    background-color: rgba(3, 117, 75, 0.07);
+    background-color: var(--dc-result-bg, rgba(3, 117, 75, 0.07));
+    color: var(--dc-result-text, #1d3932);
   }
 
   .delivery-checker__result[data-state='error'] {
-    background-color: rgba(201, 154, 46, 0.14);
+    background-color: var(--dc-error-bg, rgba(201, 154, 46, 0.14));
   }
 
   .delivery-checker__result[hidden],
@@ -373,13 +404,12 @@
     margin: 0.35rem 0 0;
     font-size: 0.8125rem;
     line-height: 1.45;
-    opacity: 0.75;
+    color: var(--dc-muted, #5f736c);
   }
 
   .delivery-checker__result-dates {
     font-weight: 600;
-    color: #03754b;
-    opacity: 1;
+    color: var(--dc-dates, #03754b);
   }
 
   @media screen and (max-width: 749px) {
@@ -394,23 +424,76 @@
   "name": "Delivery checker",
   "tag": null,
   "settings": [
-    { "type": "header", "content": "Text" },
+    { "type": "header", "content": "Text: heading" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Check delivery to your PIN code" },
     {
       "type": "text",
       "id": "subheading",
-      "label": "Short line under the heading",
+      "label": "Line under the heading",
+      "info": "Leave empty to hide.",
       "default": "See when your order can reach you."
+    },
+    { "type": "header", "content": "Text: input and button" },
+    {
+      "type": "text",
+      "id": "input_label",
+      "label": "Input label (read by screen readers)",
+      "default": "PIN code"
     },
     { "type": "text", "id": "placeholder", "label": "Input placeholder", "default": "6-digit PIN code" },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Check" },
+    { "type": "header", "content": "Text: result" },
+    {
+      "type": "text",
+      "id": "text_arrives",
+      "label": "Date range start",
+      "info": "Shown before the two dates, for example Arrives Mon, 19 Oct to Tue, 20 Oct.",
+      "default": "Arrives"
+    },
+    {
+      "type": "text",
+      "id": "text_range_joiner",
+      "label": "Word between the two dates",
+      "default": "to"
+    },
+    {
+      "type": "text",
+      "id": "text_arrives_by",
+      "label": "Single date start",
+      "info": "Used when the earliest and latest dates are the same day.",
+      "default": "Arrives by"
+    },
+    {
+      "type": "text",
+      "id": "text_same_day",
+      "label": "Before the cut-off",
+      "info": "{time} becomes the cut-off time. Leave empty to hide.",
+      "default": "Order before {time} IST for same-day dispatch."
+    },
+    {
+      "type": "text",
+      "id": "text_next_day",
+      "label": "After the cut-off",
+      "info": "{date} becomes the dispatch date. Leave empty to hide.",
+      "default": "Orders placed now are dispatched on {date}."
+    },
     {
       "type": "text",
       "id": "ship_note",
       "label": "Dispatch note",
-      "info": "Shown under the estimate. Leave empty to hide.",
+      "info": "Shown at the bottom of the result. Leave empty to hide.",
       "default": "Ships from Indore within 24–48 hours."
     },
+    { "type": "text", "id": "text_error", "label": "Invalid PIN code message", "default": "Enter a valid 6-digit PIN code." },
+    { "type": "header", "content": "Free delivery line" },
+    {
+      "type": "checkbox",
+      "id": "show_free",
+      "label": "Show a free-delivery line under the dates",
+      "info": "Only turn this on if it is true for every order.",
+      "default": false
+    },
+    { "type": "text", "id": "free_text", "label": "Free-delivery text", "default": "Free delivery" },
     { "type": "header", "content": "Dispatch" },
     {
       "type": "range",
@@ -454,15 +537,23 @@
       "step": 1,
       "default": 7
     },
-    { "type": "header", "content": "Free delivery line" },
-    {
-      "type": "checkbox",
-      "id": "show_free",
-      "label": "Show a free-delivery line under the dates",
-      "info": "Only turn this on if it is true for every order.",
-      "default": false
-    },
-    { "type": "text", "id": "free_text", "label": "Free-delivery text", "default": "Free delivery" }
+    { "type": "header", "content": "Colours: card" },
+    { "type": "color", "id": "background_color", "label": "Card background", "default": "#FFFFFF" },
+    { "type": "color", "id": "border_color", "label": "Card border", "default": "#E4E9E7" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#1D3932" },
+    { "type": "color", "id": "muted_color", "label": "Secondary text", "default": "#5F736C" },
+    { "type": "color", "id": "icon_color", "label": "Icon and focus outline", "default": "#03754B" },
+    { "type": "header", "content": "Colours: input and button" },
+    { "type": "color", "id": "input_background", "label": "Input background", "default": "#FFFFFF" },
+    { "type": "color", "id": "input_border", "label": "Input border", "default": "#C6D0CC" },
+    { "type": "color", "id": "input_text", "label": "Input text", "default": "#1D3932" },
+    { "type": "color", "id": "button_background", "label": "Button background", "default": "#1D3932" },
+    { "type": "color", "id": "button_text", "label": "Button text", "default": "#FBF8F1" },
+    { "type": "header", "content": "Colours: result" },
+    { "type": "color", "id": "result_background", "label": "Result background", "default": "#EDF4F1" },
+    { "type": "color", "id": "result_text", "label": "Result text", "default": "#1D3932" },
+    { "type": "color", "id": "dates_color", "label": "Delivery dates and free-delivery line", "default": "#03754B" },
+    { "type": "color", "id": "error_background", "label": "Error message background", "default": "#F8EFD9" }
   ],
   "presets": [
     { "name": "Delivery checker" }
