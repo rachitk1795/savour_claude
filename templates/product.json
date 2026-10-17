@@ -270,7 +270,7 @@
                   "name": "Feature pill",
                   "settings": {
                     "pill_text": "Full range",
-                    "icon_style": "heart",
+                    "icon_style": "box",
                     "desktop_width_percent": 100,
                     "corner_radius": 40,
                     "text_font": "montserrat_n4",
@@ -290,7 +290,7 @@
                   "name": "Feature pill",
                   "settings": {
                     "pill_text": "Quick dispatch",
-                    "icon_style": "sparkle",
+                    "icon_style": "truck",
                     "desktop_width_percent": 100,
                     "corner_radius": 40,
                     "text_font": "montserrat_n4",
@@ -608,7 +608,7 @@
                 "work_sundays": false,
                 "rules": "452: 1-2\n45-48: 2-3\n36-44, 30-34, 49: 3-4\n11-17, 20-28: 3-5\n50-53, 56-64, 67-69: 4-6\n70-77, 80-85: 4-6\n18-19, 78-79: 6-9\n744, 682: 7-10",
                 "default_min": 4,
-                "default_max": 7,
+                "default_max": 15,
                 "background_color": "{{ settings.color_palette.background }}",
                 "border_color": "#e4e9e7",
                 "text_color": "#1d3932",
