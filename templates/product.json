@@ -185,6 +185,7 @@
                   "settings": {
                     "pill_text": "Never soggy",
                     "icon_style": "check",
+                    "theme_icon_weight": 0.8,
                     "desktop_width_percent": 100,
                     "corner_radius": 40,
                     "text_font": "montserrat_n4",
@@ -205,6 +206,7 @@
                   "settings": {
                     "pill_text": "Compostable",
                     "icon_style": "leaf",
+                    "theme_icon_weight": 0.8,
                     "desktop_width_percent": 100,
                     "corner_radius": 40,
                     "text_font": "montserrat_n4",
@@ -271,6 +273,7 @@
                   "settings": {
                     "pill_text": "Full range",
                     "icon_style": "box",
+                    "theme_icon_weight": 0.8,
                     "desktop_width_percent": 100,
                     "corner_radius": 40,
                     "text_font": "montserrat_n4",
@@ -291,6 +294,7 @@
                   "settings": {
                     "pill_text": "Quick dispatch",
                     "icon_style": "truck",
+                    "theme_icon_weight": 0.8,
                     "desktop_width_percent": 100,
                     "corner_radius": 40,
                     "text_font": "montserrat_n4",
@@ -476,6 +480,72 @@
               },
               "blocks": {}
             },
+            "delivery_checker_cXfdeL": {
+              "type": "delivery-checker",
+              "name": "Delivery checker",
+              "settings": {
+                "heading": "Check delivery to your PIN code",
+                "subheading": "See when your order can reach you.",
+                "input_label": "PIN code",
+                "placeholder": "6-digit PIN code",
+                "button_label": "Check",
+                "text_arrives": "Arrives",
+                "text_range_joiner": "to",
+                "text_arrives_by": "Arrives by",
+                "text_same_day": "Order before {time} IST for same-day dispatch.",
+                "text_next_day": "Orders placed now are dispatched on {date}.",
+                "ship_note": "Ships from Indore within 24–48 hours.",
+                "text_error": "Enter a valid 6-digit PIN code.",
+                "show_free": false,
+                "free_text": "Free delivery",
+                "cutoff_hour": 14,
+                "work_sundays": false,
+                "rules": "452: 1-2\n45-48: 2-3\n36-44, 30-34, 49: 3-4\n11-17, 20-28: 3-5\n50-53, 56-64, 67-69: 4-6\n70-77, 80-85: 4-6\n18-19, 78-79: 6-9\n744, 682: 7-10",
+                "default_min": 4,
+                "default_max": 15,
+                "background_color": "{{ settings.color_palette.background }}",
+                "border_color": "#e4e9e7",
+                "text_color": "#1d3932",
+                "muted_color": "#5f736c",
+                "icon_color": "#03754b",
+                "input_background": "{{ settings.color_palette.background }}",
+                "input_border": "#c6d0cc",
+                "input_text": "#1d3932",
+                "button_background": "#1d3932",
+                "button_text": "#fbf8f1",
+                "result_background": "#edf4f1",
+                "result_text": "#1d3932",
+                "dates_color": "#03754b",
+                "error_background": "#f8efd9"
+              },
+              "blocks": {}
+            },
+            "text_7KVzDR": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p><strong>Want higher quantities with regular supply?</strong></p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "group_BjRJDe": {
               "type": "group",
               "name": "t:names.group",
@@ -586,45 +656,151 @@
               },
               "blocks": {}
             },
-            "delivery_checker_cXfdeL": {
-              "type": "delivery-checker",
-              "name": "Delivery checker",
+            "accordion_JhG8R8": {
+              "type": "accordion",
+              "name": "t:names.accordion",
               "settings": {
-                "heading": "Check delivery to your PIN code",
-                "subheading": "See when your order can reach you.",
-                "input_label": "PIN code",
-                "placeholder": "6-digit PIN code",
-                "button_label": "Check",
-                "text_arrives": "Arrives",
-                "text_range_joiner": "to",
-                "text_arrives_by": "Arrives by",
-                "text_same_day": "Order before {time} IST for same-day dispatch.",
-                "text_next_day": "Orders placed now are dispatched on {date}.",
-                "ship_note": "Ships from Indore within 24–48 hours.",
-                "text_error": "Enter a valid 6-digit PIN code.",
-                "show_free": false,
-                "free_text": "Free delivery",
-                "cutoff_hour": 14,
-                "work_sundays": false,
-                "rules": "452: 1-2\n45-48: 2-3\n36-44, 30-34, 49: 3-4\n11-17, 20-28: 3-5\n50-53, 56-64, 67-69: 4-6\n70-77, 80-85: 4-6\n18-19, 78-79: 6-9\n744, 682: 7-10",
-                "default_min": 4,
-                "default_max": 15,
-                "background_color": "{{ settings.color_palette.background }}",
-                "border_color": "#e4e9e7",
-                "text_color": "#1d3932",
-                "muted_color": "#5f736c",
-                "icon_color": "#03754b",
-                "input_background": "{{ settings.color_palette.background }}",
-                "input_border": "#c6d0cc",
-                "input_text": "#1d3932",
-                "button_background": "#1d3932",
-                "button_text": "#fbf8f1",
-                "result_background": "#edf4f1",
-                "result_text": "#1d3932",
-                "dates_color": "#03754b",
-                "error_background": "#f8efd9"
+                "icon": "caret",
+                "dividers": true,
+                "divider_color": "",
+                "type_preset": "h6",
+                "background_color": "",
+                "text_color": "",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
               },
-              "blocks": {}
+              "blocks": {
+                "accordion_row_74KBaz": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Shipping & Return",
+                    "open_by_default": true,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text_HHyW3H": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_HHyW3H"
+                  ]
+                },
+                "accordion_row_9rmQhw": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Product description",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text_wjcTEe": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_wjcTEe"
+                  ]
+                },
+                "accordion_row_WDWbxH": {
+                  "type": "_accordion-row",
+                  "disabled": true,
+                  "settings": {
+                    "heading": "Manufacturing",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text_BmKwkg": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_BmKwkg"
+                  ]
+                }
+              },
+              "block_order": [
+                "accordion_row_74KBaz",
+                "accordion_row_9rmQhw",
+                "accordion_row_WDWbxH"
+              ]
             }
           },
           "block_order": [
@@ -638,9 +814,11 @@
             "text_gXMUag",
             "buy_buttons_eYQEYi",
             "divider_3awnnA",
+            "delivery_checker_cXfdeL",
+            "text_7KVzDR",
             "group_BjRJDe",
             "text_kDKCdE",
-            "delivery_checker_cXfdeL"
+            "accordion_JhG8R8"
           ]
         }
       },
@@ -1109,6 +1287,7 @@
               "settings": {
                 "pill_text": "Bulk Pricing",
                 "icon_style": "check",
+                "theme_icon_weight": 0.8,
                 "desktop_width_percent": 100,
                 "corner_radius": 40,
                 "text_font": "montserrat_n4",
@@ -1129,6 +1308,7 @@
               "settings": {
                 "pill_text": "GST invoice",
                 "icon_style": "check",
+                "theme_icon_weight": 0.8,
                 "desktop_width_percent": 100,
                 "corner_radius": 40,
                 "text_font": "montserrat_n4",
@@ -1149,6 +1329,7 @@
               "settings": {
                 "pill_text": "Pan-India shipping",
                 "icon_style": "check",
+                "theme_icon_weight": 0.8,
                 "desktop_width_percent": 100,
                 "corner_radius": 40,
                 "text_font": "montserrat_n4",
@@ -1169,6 +1350,7 @@
               "settings": {
                 "pill_text": "Dispatch within 24 hours",
                 "icon_style": "check",
+                "theme_icon_weight": 0.8,
                 "desktop_width_percent": 100,
                 "corner_radius": 40,
                 "text_font": "montserrat_n4",
