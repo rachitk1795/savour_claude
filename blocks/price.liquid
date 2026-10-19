@@ -39,7 +39,7 @@
 %}
 
 <product-price
-  class="text-block {{ text_block_classes }} text-{{ block_settings.alignment }} {{ block_settings.type_preset | default: 'paragraph' }} spacing-style"
+  class="text-block {{ text_block_classes }}{% if block_settings.hide_compare_at %} price-block--hide-compare{% endif %} text-{{ block_settings.alignment }} {{ block_settings.type_preset | default: 'paragraph' }} spacing-style"
   data-block-id="{{ block.id }}"
   data-product-id="{{ product_resource.id }}"
   style="
@@ -92,6 +92,12 @@
 
 {% render 'payment-terms-styles' %}
 
+{% stylesheet %}
+  .price-block--hide-compare .compare-at-price {
+    display: none;
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "t:names.product_price",
@@ -110,6 +116,13 @@
       "id": "show_sale_price_first",
       "label": "t:settings.show_sale_price_first",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_compare_at",
+      "label": "Hide struck-out compare-at price",
+      "info": "Shows only the selling price in this block. Prices elsewhere (product cards, price card) are not affected.",
+      "default": false
     },
     {
       "type": "checkbox",
