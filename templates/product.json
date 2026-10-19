@@ -886,7 +886,7 @@
       "name": "t:names.marquee_section",
       "settings": {
         "movement_direction": "normal",
-        "background_color": "",
+        "background_color": "{{ settings.color_palette.foreground }}",
         "padding-block-start": 24,
         "padding-block-end": 24,
         "gap_between_elements": 56
@@ -1413,9 +1413,272 @@
         "padding-block-end": 30
       }
     },
-    "section_MD7gC7": {
+    "section_hVWxBY": {
       "type": "section",
-      "name": "t:names.custom_section",
+      "blocks": {
+        "text_myhr6f": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Frequently asked questions</h2>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "h3",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "accordion_L9XgVr": {
+          "type": "accordion",
+          "name": "t:names.accordion",
+          "settings": {
+            "icon": "caret",
+            "dividers": true,
+            "divider_color": "",
+            "type_preset": "h5",
+            "background_color": "",
+            "text_color": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "accordion_row_zeA6kP": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "What is the shelf life of straws?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_nGE7B8": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Since these straws are made from biodegradable materials, unlike plastic, these straws do have an expiration time.<br/><br/>They last in your shelves for about <strong>8-12 months</strong> when stored properly packed and away from moisture.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_nGE7B8"
+              ]
+            },
+            "accordion_row_mHeNnE": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Are these edible straws?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_JPc6qL": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>No, these straws are not edible.&nbsp;<br/><br/>You dispose of them like the regular straws, and they <strong>turn into compost</strong> in your city's waste management facilities.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_JPc6qL"
+              ]
+            },
+            "accordion_row_jaTJzN": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "When will I get my order?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_HNgTJ7": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_HNgTJ7"
+              ]
+            },
+            "accordion_row_n6JYak": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "Where are your products manufactured?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_KTrypX": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_KTrypX"
+              ]
+            },
+            "accordion_row_3kje6M": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "How much does shipping cost?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_3BBGcV": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Shipping is calculated based on your location and the items in your order. You will always know the shipping price before you purchase.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_3BBGcV"
+              ]
+            }
+          },
+          "block_order": [
+            "accordion_row_zeA6kP",
+            "accordion_row_mHeNnE",
+            "accordion_row_jaTJzN",
+            "accordion_row_n6JYak",
+            "accordion_row_3kje6M"
+          ]
+        }
+      },
+      "block_order": [
+        "text_myhr6f",
+        "accordion_L9XgVr"
+      ],
+      "name": "t:names.faq_section",
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -1424,12 +1687,12 @@
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
+        "gap": 32,
         "section_width": "page-width",
-        "section_height": "small",
+        "section_height": "",
         "section_height_custom": 50,
         "background_media": "none",
-        "background_color": "",
+        "background_color": "{{ settings.color_palette.background }}",
         "video_position": "cover",
         "background_image_position": "cover",
         "toggle_overlay": false,
@@ -1441,8 +1704,8 @@
         "border_opacity": 100,
         "border_color": "",
         "border_radius": 0,
-        "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-start": 48,
+        "padding-block-end": 48
       }
     }
   },
@@ -1451,6 +1714,6 @@
     "marquee_cae87m",
     "section_rraMGz",
     "section_wUpKRq",
-    "section_MD7gC7"
+    "section_hVWxBY"
   ]
 }
