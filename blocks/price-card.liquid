@@ -117,7 +117,13 @@
   endif
 
   assign currency_symbol = cart.currency.symbol
+  assign badge_icon = s.badge_icon | default: 'price_tag'
 -%}
+{%- capture badge_svg -%}
+  {%- if badge_icon != 'none' -%}
+    <svg class="price-card__badge-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><g fill="currentColor" stroke="currentColor" stroke-width="{{ s.badge_icon_weight }}" stroke-linejoin="round" stroke-linecap="round">{% render 'icon', icon: badge_icon %}</g></svg>
+  {%- endif -%}
+{%- endcapture -%}
 
 {%- if v != blank -%}
   <price-card
@@ -151,7 +157,7 @@
             <span class="price-card__unit-label">/ {{ s.unit_label | escape }}</span>
           {%- endif -%}
           {%- if has_saving and s.show_saving -%}
-            <span class="price-card__badge">{{ s.save_label | escape }} {{ saving | money }}</span>
+            <span class="price-card__badge">{{ badge_svg }}<span>{{ s.save_label | escape }} {{ saving | money }}</span></span>
           {%- endif -%}
         </div>
 
@@ -172,7 +178,7 @@
           {%- if has_saving -%}
             <s class="price-card__mrp">{{ v.compare_at_price | money }}</s>
             {%- if s.show_saving -%}
-              <span class="price-card__badge">{{ s.save_label | escape }} {{ saving | money }}</span>
+              <span class="price-card__badge">{{ badge_svg }}<span>{{ s.save_label | escape }} {{ saving | money }}</span></span>
             {%- endif -%}
           {%- endif -%}
         </div>
@@ -307,6 +313,9 @@
   }
 
   .price-card__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
     padding: 0.3125rem 0.75rem;
     border-radius: 100px;
     background-color: var(--pc-badge-bg, #f4e7c3);
@@ -315,6 +324,12 @@
     font-weight: 600;
     font-size: 0.8125rem;
     line-height: 1.2;
+  }
+
+  .price-card__badge-icon {
+    flex: none;
+    width: 0.9375rem;
+    height: 0.9375rem;
   }
 
   .price-card__total {
@@ -422,6 +437,8 @@
     { "type": "text", "id": "pack_label", "label": "Pack label", "default": "for pack of" },
     { "type": "checkbox", "id": "show_saving", "label": "Show saving badge", "default": true },
     { "type": "text", "id": "save_label", "label": "Saving badge text", "default": "Save" },
+    { "type": "select", "id": "badge_icon", "label": "Saving badge icon", "options": [{"value": "none", "label": "No icon"}, {"value": "apple", "label": "Apple"}, {"value": "arrow", "label": "Arrow"}, {"value": "banana", "label": "Banana"}, {"value": "bottle", "label": "Bottle"}, {"value": "box", "label": "Box"}, {"value": "carrot", "label": "Carrot"}, {"value": "chat_bubble", "label": "Chat bubble"}, {"value": "check_box", "label": "Check box"}, {"value": "clipboard", "label": "Clipboard"}, {"value": "dairy", "label": "Dairy"}, {"value": "dairy_free", "label": "Dairy free"}, {"value": "dryer", "label": "Dryer"}, {"value": "eye", "label": "Eye"}, {"value": "fire", "label": "Fire"}, {"value": "gluten_free", "label": "Gluten free"}, {"value": "heart", "label": "Heart"}, {"value": "iron", "label": "Iron"}, {"value": "leaf", "label": "Leaf"}, {"value": "leather", "label": "Leather"}, {"value": "lightning_bolt", "label": "Lightning bolt"}, {"value": "lipstick", "label": "Lipstick"}, {"value": "lock", "label": "Lock"}, {"value": "map_pin", "label": "Map pin"}, {"value": "nut_free", "label": "Nut free"}, {"value": "pants", "label": "Pants"}, {"value": "paw_print", "label": "Paw print"}, {"value": "pepper", "label": "Pepper"}, {"value": "perfume", "label": "Perfume"}, {"value": "plane", "label": "Plane"}, {"value": "plant", "label": "Plant"}, {"value": "price_tag", "label": "Price tag (default)"}, {"value": "question_mark", "label": "Question mark"}, {"value": "recycle", "label": "Recycle"}, {"value": "return", "label": "Return"}, {"value": "ruler", "label": "Ruler"}, {"value": "serving_dish", "label": "Serving dish"}, {"value": "shirt", "label": "Shirt"}, {"value": "shoe", "label": "Shoe"}, {"value": "silhouette", "label": "Silhouette"}, {"value": "snowflake", "label": "Snowflake"}, {"value": "star", "label": "Star"}, {"value": "stopwatch", "label": "Stopwatch"}, {"value": "truck", "label": "Truck"}, {"value": "washing", "label": "Washing"}], "default": "price_tag" },
+    { "type": "range", "id": "badge_icon_weight", "label": "Badge icon boldness", "min": 0, "max": 1.5, "step": 0.1, "default": 0.6 },
     { "type": "header", "content": "Chips (leave empty to hide)" },
     { "type": "text", "id": "chip_1", "label": "Chip 1", "default": "GST included" },
     { "type": "select", "id": "chip_1_icon", "label": "Chip 1 icon", "options": [{"value": "none", "label": "No icon"}, {"value": "tick", "label": "Tick (default)"}, {"value": "apple", "label": "Apple"}, {"value": "arrow", "label": "Arrow"}, {"value": "banana", "label": "Banana"}, {"value": "bottle", "label": "Bottle"}, {"value": "box", "label": "Box"}, {"value": "carrot", "label": "Carrot"}, {"value": "chat_bubble", "label": "Chat bubble"}, {"value": "check_box", "label": "Check box"}, {"value": "clipboard", "label": "Clipboard"}, {"value": "dairy", "label": "Dairy"}, {"value": "dairy_free", "label": "Dairy free"}, {"value": "dryer", "label": "Dryer"}, {"value": "eye", "label": "Eye"}, {"value": "fire", "label": "Fire"}, {"value": "gluten_free", "label": "Gluten free"}, {"value": "heart", "label": "Heart"}, {"value": "iron", "label": "Iron"}, {"value": "leaf", "label": "Leaf"}, {"value": "leather", "label": "Leather"}, {"value": "lightning_bolt", "label": "Lightning bolt"}, {"value": "lipstick", "label": "Lipstick"}, {"value": "lock", "label": "Lock"}, {"value": "map_pin", "label": "Map pin"}, {"value": "nut_free", "label": "Nut free"}, {"value": "pants", "label": "Pants"}, {"value": "paw_print", "label": "Paw print"}, {"value": "pepper", "label": "Pepper"}, {"value": "perfume", "label": "Perfume"}, {"value": "plane", "label": "Plane"}, {"value": "plant", "label": "Plant"}, {"value": "price_tag", "label": "Price tag"}, {"value": "question_mark", "label": "Question mark"}, {"value": "recycle", "label": "Recycle"}, {"value": "return", "label": "Return"}, {"value": "ruler", "label": "Ruler"}, {"value": "serving_dish", "label": "Serving dish"}, {"value": "shirt", "label": "Shirt"}, {"value": "shoe", "label": "Shoe"}, {"value": "silhouette", "label": "Silhouette"}, {"value": "snowflake", "label": "Snowflake"}, {"value": "star", "label": "Star"}, {"value": "stopwatch", "label": "Stopwatch"}, {"value": "truck", "label": "Truck"}, {"value": "washing", "label": "Washing"}], "default": "tick" },
