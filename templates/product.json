@@ -523,6 +523,7 @@
             "accordion_JhG8R8": {
               "type": "accordion",
               "name": "t:names.accordion",
+              "disabled": true,
               "settings": {
                 "icon": "caret",
                 "dividers": true,
