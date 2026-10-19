@@ -325,14 +325,14 @@
                 "total_label": "Total:",
                 "pack_label": "for pack of",
                 "show_saving": true,
-                "save_label": "Save",
+                "save_label": "Save 10%",
                 "chip_1": "GST included",
                 "chip_2": "Fast shipping",
                 "chip_3": "Factory direct",
                 "background_color": "{{ settings.color_palette.background }}",
                 "accent_color": "#03754b",
-                "badge_bg": "#f4e7c3",
-                "badge_fg": "#7a5a12"
+                "badge_bg": "{{ settings.color_palette.foreground }}",
+                "badge_fg": "#C99A2E"
               },
               "blocks": {}
             },
