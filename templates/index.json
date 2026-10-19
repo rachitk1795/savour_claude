@@ -208,6 +208,7 @@
                   "settings": {
                     "pill_text": "Never soggy",
                     "icon_style": "check",
+                    "theme_icon_weight": 0.8,
                     "desktop_width_percent": 100,
                     "corner_radius": 40,
                     "text_font": "montserrat_n6",
@@ -228,6 +229,7 @@
                   "settings": {
                     "pill_text": "Compostable",
                     "icon_style": "leaf",
+                    "theme_icon_weight": 0.8,
                     "desktop_width_percent": 50,
                     "corner_radius": 40,
                     "text_font": "montserrat_n6",
@@ -294,6 +296,7 @@
                   "settings": {
                     "pill_text": "Made from PLA",
                     "icon_style": "sparkle",
+                    "theme_icon_weight": 0.8,
                     "desktop_width_percent": 50,
                     "corner_radius": 40,
                     "text_font": "montserrat_n6",
@@ -314,6 +317,7 @@
                   "settings": {
                     "pill_text": "CPCB Certified",
                     "icon_style": "heart",
+                    "theme_icon_weight": 0.8,
                     "desktop_width_percent": 50,
                     "corner_radius": 40,
                     "text_font": "montserrat_n6",
@@ -501,7 +505,7 @@
           "name": "t:names.group",
           "settings": {
             "content_direction": "row",
-            "vertical_on_mobile": true,
+            "vertical_on_mobile": false,
             "horizontal_alignment": "center",
             "vertical_alignment": "center",
             "align_baseline": false,
@@ -837,6 +841,7 @@
               "settings": {
                 "pill_text": "Bulk Pricing",
                 "icon_style": "check",
+                "theme_icon_weight": 0.8,
                 "desktop_width_percent": 100,
                 "corner_radius": 40,
                 "text_font": "montserrat_n4",
@@ -857,6 +862,7 @@
               "settings": {
                 "pill_text": "GST invoice",
                 "icon_style": "check",
+                "theme_icon_weight": 0.8,
                 "desktop_width_percent": 100,
                 "corner_radius": 40,
                 "text_font": "montserrat_n4",
@@ -877,6 +883,7 @@
               "settings": {
                 "pill_text": "Pan-India shipping",
                 "icon_style": "check",
+                "theme_icon_weight": 0.8,
                 "desktop_width_percent": 100,
                 "corner_radius": 40,
                 "text_font": "montserrat_n4",
@@ -897,6 +904,7 @@
               "settings": {
                 "pill_text": "Dispatch within 24 hours",
                 "icon_style": "check",
+                "theme_icon_weight": 0.8,
                 "desktop_width_percent": 100,
                 "corner_radius": 40,
                 "text_font": "montserrat_n4",
@@ -3884,6 +3892,134 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "section_GTP3k4": {
+      "type": "section",
+      "blocks": {
+        "group_itNhPg": {
+          "type": "group",
+          "name": "t:names.group",
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_GFeUNe": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>New arrivals</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_r96Vn9": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "Shop now",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button",
+                "custom_button_background": "{{ settings.color_palette.foreground }}",
+                "custom_button_text": "{{ settings.color_palette.background }}",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_GFeUNe",
+            "button_r96Vn9"
+          ]
+        }
+      },
+      "block_order": [
+        "group_itNhPg"
+      ],
+      "name": "t:names.custom_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
@@ -3897,6 +4033,7 @@
     "section_7qACzK",
     "hero_xtrWdc",
     "section_MjYFe8",
-    "section_WtWG6V"
+    "section_WtWG6V",
+    "section_GTP3k4"
   ]
 }
