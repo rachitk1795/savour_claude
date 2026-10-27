@@ -1961,10 +1961,10 @@
         "padding-block-end": 21
       }
     },
-    "section_hVWxBY": {
+    "section_yC383k": {
       "type": "section",
       "blocks": {
-        "text_myhr6f": {
+        "text_Dbygq7": {
           "type": "text",
           "name": "t:names.heading",
           "settings": {
@@ -1990,7 +1990,7 @@
           },
           "blocks": {}
         },
-        "accordion_L9XgVr": {
+        "accordion_9RRkxz": {
           "type": "accordion",
           "name": "t:names.accordion",
           "settings": {
@@ -2011,7 +2011,7 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "accordion_row_zeA6kP": {
+            "accordion_row_bbn9NG": {
               "type": "_accordion-row",
               "settings": {
                 "heading": "What is the shelf life of straws?",
@@ -2020,7 +2020,7 @@
                 "width": 20
               },
               "blocks": {
-                "text_nGE7B8": {
+                "text_GNgT9j": {
                   "type": "text",
                   "settings": {
                     "text": "<p>Since these straws are made from biodegradable materials, unlike plastic, these straws do have an expiration time.<br/><br/>They last in your shelves for about <strong>8-12 months</strong> when stored properly packed and away from moisture.</p>",
@@ -2047,10 +2047,10 @@
                 }
               },
               "block_order": [
-                "text_nGE7B8"
+                "text_GNgT9j"
               ]
             },
-            "accordion_row_mHeNnE": {
+            "accordion_row_N9atKV": {
               "type": "_accordion-row",
               "settings": {
                 "heading": "Are these edible straws?",
@@ -2059,7 +2059,7 @@
                 "width": 20
               },
               "blocks": {
-                "text_JPc6qL": {
+                "text_q9rxJC": {
                   "type": "text",
                   "settings": {
                     "text": "<p>No, these straws are not edible.&nbsp;<br/><br/>You dispose of them like the regular straws, and they <strong>turn into compost</strong> in your city's waste management facilities.</p>",
@@ -2086,24 +2086,24 @@
                 }
               },
               "block_order": [
-                "text_JPc6qL"
+                "text_q9rxJC"
               ]
             },
-            "accordion_row_jaTJzN": {
+            "accordion_row_YQfinh": {
               "type": "_accordion-row",
               "name": "t:names.accordion_row",
               "settings": {
-                "heading": "When will I get my order?",
+                "heading": "These straws feel like plastic. What material are these made of?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
               },
               "blocks": {
-                "text_HNgTJ7": {
+                "text_LhTTm6": {
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                    "text": "<p>They do feel like plastic, and that catches most people off guard. <strong>They’re actually made from PLA (polylactic acid), a plant-based material derived from corn starch, not petroleum.</strong> That’s why they stay firm for hours and never turn soggy like paper straws do, while still being 100% compostable and CPCB-certified. So you get the sturdiness of plastic with none of the pollution.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -2127,24 +2127,24 @@
                 }
               },
               "block_order": [
-                "text_HNgTJ7"
+                "text_LhTTm6"
               ]
             },
-            "accordion_row_n6JYak": {
+            "accordion_row_PyntDd": {
               "type": "_accordion-row",
               "name": "t:names.accordion_row",
               "settings": {
-                "heading": "Where are your products manufactured?",
+                "heading": "What is your MOQ for bulk pricing?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
               },
               "blocks": {
-                "text_KTrypX": {
+                "text_dTgMNq": {
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value.</p>",
+                    "text": "<p><strong>Our bulk pricing starts from 3,000 pieces.</strong> The exact minimum depends on the size and style of straw you choose. Message us on WhatsApp at +91 91111 29997 with your size, style and quantity, and we’ll send you our bulk rates.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -2168,24 +2168,24 @@
                 }
               },
               "block_order": [
-                "text_KTrypX"
+                "text_dTgMNq"
               ]
             },
-            "accordion_row_3kje6M": {
+            "accordion_row_7YPMeP": {
               "type": "_accordion-row",
               "name": "t:names.accordion_row",
               "settings": {
-                "heading": "How much does shipping cost?",
+                "heading": "In how many days will I receive my order?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
               },
               "blocks": {
-                "text_3BBGcV": {
+                "text_3aAGFt": {
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Shipping is calculated based on your location and the items in your order. You will always know the shipping price before you purchase.</p>",
+                    "text": "<p><strong>We dispatch orders within 1–2 working days, and delivery usually takes another 4–5 days after that</strong>, so most orders arrive within a week. Once your order is dispatched, we’ll share the tracking details so you can follow it to your door. Delivery times can vary slightly by location and courier.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -2209,22 +2209,22 @@
                 }
               },
               "block_order": [
-                "text_3BBGcV"
+                "text_3aAGFt"
               ]
             }
           },
           "block_order": [
-            "accordion_row_zeA6kP",
-            "accordion_row_mHeNnE",
-            "accordion_row_jaTJzN",
-            "accordion_row_n6JYak",
-            "accordion_row_3kje6M"
+            "accordion_row_bbn9NG",
+            "accordion_row_N9atKV",
+            "accordion_row_YQfinh",
+            "accordion_row_PyntDd",
+            "accordion_row_7YPMeP"
           ]
         }
       },
       "block_order": [
-        "text_myhr6f",
-        "accordion_L9XgVr"
+        "text_Dbygq7",
+        "accordion_9RRkxz"
       ],
       "name": "t:names.faq_section",
       "settings": {
@@ -2264,6 +2264,6 @@
     "section_wUpKRq",
     "section_FB98TM",
     "section_VPrY4Y",
-    "section_hVWxBY"
+    "section_yC383k"
   ]
 }
