@@ -185,6 +185,7 @@
                   "settings": {
                     "pill_text": "Never soggy",
                     "icon_style": "check",
+                    "theme_icon_weight": 0.8,
                     "desktop_width_percent": 100,
                     "corner_radius": 40,
                     "text_font": "montserrat_n4",
@@ -205,6 +206,7 @@
                   "settings": {
                     "pill_text": "Compostable",
                     "icon_style": "leaf",
+                    "theme_icon_weight": 0.8,
                     "desktop_width_percent": 100,
                     "corner_radius": 40,
                     "text_font": "montserrat_n4",
@@ -271,6 +273,7 @@
                   "settings": {
                     "pill_text": "Cornstarch",
                     "icon_style": "heart",
+                    "theme_icon_weight": 0.8,
                     "desktop_width_percent": 100,
                     "corner_radius": 40,
                     "text_font": "montserrat_n4",
@@ -291,6 +294,7 @@
                   "settings": {
                     "pill_text": "Quick dispatch",
                     "icon_style": "sparkle",
+                    "theme_icon_weight": 0.8,
                     "desktop_width_percent": 100,
                     "corner_radius": 40,
                     "text_font": "montserrat_n4",
@@ -315,6 +319,7 @@
               "type": "price",
               "settings": {
                 "show_sale_price_first": true,
+                "hide_compare_at": false,
                 "show_installments": true,
                 "show_tax_info": true,
                 "type_preset": "h4",
@@ -501,49 +506,10 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "accordion_row_pfRgBe": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Return policy",
-                    "open_by_default": false,
-                    "icon": "none",
-                    "width": 20
-                  },
-                  "blocks": {
-                    "text_T84qg6": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "text_color": "",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_T84qg6"
-                  ]
-                },
                 "accordion_row_EwDjiJ": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Shipping",
+                    "heading": "Shipping & Returns",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
@@ -552,7 +518,7 @@
                     "text_naARDN": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                        "text": "<p><strong>Shipping</strong></p><ul><li>Orders are dispatched within 1-2 working days</li><li>We deliver pan-India</li><li>Shipping is included in the price: no extra charges at checkout</li><li>Delivery takes 4-5 days after dispatch</li><li>Once the box leaves our facility, we are not responsible for any delivery delays caused by the courier or transport partner</li></ul><p><strong>Returns & claims</strong></p><ul><li>Returns are accepted only for damaged or missing items</li><li>Claims must be raised within 48 hours of delivery</li><li>A video proof of the damage or missing items is mandatory for every claim</li><li>Please shoot an unboxing video: start recording before opening the sealed box, keep the shipping label visible, and record continuously while opening the box and counting the contents</li><li>Claims without video proof cannot be accepted</li><li>No returns for any other reason (change of mind, wrong size or colour ordered, etc.)</li><li>Approved claims are refunded</li></ul><p><strong>How to raise a claim</strong></p><ul><li>WhatsApp us on +91 91111 29997 within 48 hours of delivery</li><li>Share your order number and the unboxing video</li></ul>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -582,7 +548,7 @@
                 "accordion_row_QnUhQb": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Manufacturing",
+                    "heading": "Product details",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
@@ -591,7 +557,7 @@
                     "text_pTEFRX": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value.</p>",
+                        "text": "<p><em>Try our full straw range before you place a bulk order.</em></p><ul><li>A mixed kit of our PLA straws across all sizes: 6 mm, 8 mm, 10 mm and 12 mm (all 200 mm long)</li><li>Includes all colours: white, black and green</li><li>Includes both loose and individually wrapped options</li><li>Feel the size difference for yourself and find the right fit for each drink: juices (6 mm), coffee and shakes (8 mm), thick shakes (10 mm), boba tea (12 mm)</li><li>Check the quality first: sturdy, heat and cold resistant, and stays firm without going soggy</li><li>Made from PLA (corn-starch based), a plant-based alternative to single-use plastic that looks and feels like plastic</li><li>Industrially compostable in 3-4 months</li><li>CPCB compliant and BIS IS 17088 certified</li><li>Priced at ₹149, shipping included</li><li>Ideal for cafés, restaurants, cloud kitchens and juice bars before ordering in bulk</li><li>Ready to order in bulk? WhatsApp us for bulk orders and custom branding</li></ul>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -620,7 +586,6 @@
                 }
               },
               "block_order": [
-                "accordion_row_pfRgBe",
                 "accordion_row_EwDjiJ",
                 "accordion_row_QnUhQb"
               ]
@@ -1106,6 +1071,7 @@
               "settings": {
                 "pill_text": "Bulk Pricing",
                 "icon_style": "check",
+                "theme_icon_weight": 0.8,
                 "desktop_width_percent": 100,
                 "corner_radius": 40,
                 "text_font": "montserrat_n4",
@@ -1126,6 +1092,7 @@
               "settings": {
                 "pill_text": "GST invoice",
                 "icon_style": "check",
+                "theme_icon_weight": 0.8,
                 "desktop_width_percent": 100,
                 "corner_radius": 40,
                 "text_font": "montserrat_n4",
@@ -1146,6 +1113,7 @@
               "settings": {
                 "pill_text": "Pan-India shipping",
                 "icon_style": "check",
+                "theme_icon_weight": 0.8,
                 "desktop_width_percent": 100,
                 "corner_radius": 40,
                 "text_font": "montserrat_n4",
@@ -1166,6 +1134,7 @@
               "settings": {
                 "pill_text": "Dispatch within 24 hours",
                 "icon_style": "check",
+                "theme_icon_weight": 0.8,
                 "desktop_width_percent": 100,
                 "corner_radius": 40,
                 "text_font": "montserrat_n4",
