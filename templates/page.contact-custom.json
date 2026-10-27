@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "contact": {
+      "type": "custom-contact",
+      "settings": {
+        "heading": "Let's talk straws.",
+        "subheading": "Whether you run a café or a wholesale business, we're happy to help you find the right fit, send samples, or set up regular supply.",
+        "whatsapp_number": "+91 91111 29997",
+        "whatsapp_link": "https://wa.me/919111129997?text=Hi%20OrganiPaks%2C%20I'd%20like%20to%20know%20more%20about%20your%20straws.",
+        "whatsapp_note": "Fastest way to reach us — bulk pricing, samples and reorders.",
+        "email": "rachit@organipaks.in",
+        "instagram_handle": "@organipaks",
+        "instagram_link": "https://instagram.com/organipaks",
+        "address": "OrganiPaks India Pvt. Ltd., 344 Vikram Tower, Sapna Sangeeta Road, Indore, MP",
+        "bulk_note": "Buying in bulk (3,000+ pieces)? WhatsApp us for business pricing — it's quicker than the form.",
+        "submit_label": "Send",
+        "success_message": "Thanks — we've got your message and will reply within one working day. For anything urgent, WhatsApp us on +91 91111 29997.",
+        "background_color": "#FBF8F1"
+      }
+    }
+  },
+  "order": [
+    "contact"
+  ]
+}
