@@ -403,7 +403,7 @@
                   "settings": {
                     "label": "Get Bulk Pricing",
                     "link": "https://wa.me/919111129997",
-                    "open_in_new_tab": false,
+                    "open_in_new_tab": true,
                     "style_class": "button-secondary",
                     "custom_button_background": "{{ settings.color_palette.foreground }}",
                     "custom_button_text": "{{ settings.color_palette.background }}",
@@ -769,7 +769,7 @@
           "settings": {
             "label": "Get Business Pricing",
             "link": "https://wa.me/919111129997",
-            "open_in_new_tab": false,
+            "open_in_new_tab": true,
             "style_class": "button-secondary",
             "custom_button_background": "{{ settings.color_palette.foreground }}",
             "custom_button_text": "{{ settings.color_palette.background }}",
@@ -2644,7 +2644,7 @@
                   "settings": {
                     "label": "Request a quote",
                     "link": "https://wa.me/919111129997",
-                    "open_in_new_tab": false,
+                    "open_in_new_tab": true,
                     "style_class": "button",
                     "custom_button_background": "{{ settings.color_palette.foreground }}",
                     "custom_button_text": "{{ settings.color_palette.background }}",
