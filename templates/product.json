@@ -705,7 +705,7 @@
                     "text_HHyW3H": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
+                        "text": "<p><strong>Shipping</strong></p><ul><li>Orders are dispatched within 1-2 working days</li><li>We deliver pan-India</li><li>Shipping is included in the price: no extra charges at checkout</li><li>Delivery takes 4-5 days after dispatch</li><li>Once the box leaves our facility, we are not responsible for any delivery delays caused by the courier or transport partner</li></ul><p><strong>Returns & claims</strong></p><ul><li>Returns are accepted only for damaged or missing items</li><li>Claims must be raised within 48 hours of delivery</li><li>A video proof of the damage or missing items is mandatory for every claim</li><li>Please shoot an unboxing video: start recording before opening the sealed box, keep the shipping label visible, and record continuously while opening the box and counting the contents</li><li>Claims without video proof cannot be accepted</li><li>No returns for any other reason (change of mind, wrong size or colour ordered, etc.)</li><li>Approved claims are refunded</li></ul><p><strong>How to raise a claim</strong></p><ul><li>WhatsApp us on +91 91111 29997 within 48 hours of delivery</li><li>Share your order number and the unboxing video</li></ul>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
