@@ -1110,7 +1110,6 @@
                 "product_title_JybHk3": {
                   "type": "product-title",
                   "name": "t:names.product_title",
-                  "disabled": true,
                   "settings": {
                     "width": "fit-content",
                     "max_width": "normal",
@@ -1207,7 +1206,6 @@
                 "product_title_RghrGM": {
                   "type": "product-title",
                   "name": "t:names.product_title",
-                  "disabled": true,
                   "settings": {
                     "width": "fit-content",
                     "max_width": "normal",
@@ -3730,7 +3728,7 @@
               "type": "_accordion-row",
               "name": "t:names.accordion_row",
               "settings": {
-                "heading": "When will I get my order?",
+                "heading": "These straws feel like plastic. What material are these made of?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -3740,7 +3738,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                    "text": "<p>They do feel like plastic, and that catches most people off guard. <strong>They’re actually made from PLA (polylactic acid), a plant-based material derived from corn starch, not petroleum.</strong> That’s why they stay firm for hours and never turn soggy like paper straws do, while still being 100% compostable and CPCB-certified. So you get the sturdiness of plastic with none of the pollution.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -3771,7 +3769,7 @@
               "type": "_accordion-row",
               "name": "t:names.accordion_row",
               "settings": {
-                "heading": "Where are your products manufactured?",
+                "heading": "What is your MOQ for bulk pricing?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -3781,7 +3779,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value.</p>",
+                    "text": "<p><strong>Our bulk pricing starts from 3,000 pieces.</strong> The exact minimum depends on the size and style of straw you choose. Message us on WhatsApp at +91 91111 29997 with your size, style and quantity, and we’ll send you our bulk rates.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -3812,7 +3810,7 @@
               "type": "_accordion-row",
               "name": "t:names.accordion_row",
               "settings": {
-                "heading": "How much does shipping cost?",
+                "heading": "In how many days will I receive my order?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -3822,7 +3820,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Shipping is calculated based on your location and the items in your order. You will always know the shipping price before you purchase.</p>",
+                    "text": "<p><strong>We dispatch orders within 1–2 working days, and delivery usually takes another 4–5 days after that</strong>, so most orders arrive within a week. Once your order is dispatched, we’ll share the tracking details so you can follow it to your door. Delivery times can vary slightly by location and courier.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
