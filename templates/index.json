@@ -768,7 +768,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "Get Business Pricing",
-            "link": "shopify://collections/all",
+            "link": "https://wa.me/919111129997",
             "open_in_new_tab": false,
             "style_class": "button-secondary",
             "custom_button_background": "{{ settings.color_palette.foreground }}",
@@ -2643,7 +2643,7 @@
                   "name": "t:names.button",
                   "settings": {
                     "label": "Request a quote",
-                    "link": "shopify://collections/all",
+                    "link": "https://wa.me/919111129997",
                     "open_in_new_tab": false,
                     "style_class": "button",
                     "custom_button_background": "{{ settings.color_palette.foreground }}",
